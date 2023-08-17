@@ -186,6 +186,8 @@ img {
     width: 100%;
     height: 2.5px;
     background-color: var(--first-color);
+    padding: 0;
+    margin: 0;
 }
 
 /*=== Show menu ===*/
