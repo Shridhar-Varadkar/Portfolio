@@ -1,356 +1,279 @@
 <!DOCTYPE html>
-<!--Design By shree-->
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./styles.css">
-
-    <!-- =====BOX ICONS===== -->
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <title>Portfolio</title>
+    <title>Shridhar's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <!--===== HEADER =====-->
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav__logo">
-                    <h1>Portfolio</h1>
-                </a>
-            </div>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                    <li class="nav__item"><a href="#expertise" class="nav__link">Expertise</a></li>
-                    <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="nav-logo">SV</a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </div>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
-        <hr class="nav_hr">
     </header>
 
-    <main class="l-main">
-        <!--===== HOME =====-->
-        <section class="home bd-grid" id="home">
-            <div class="home__data">
-                <h1 class="home__title">Hello,<br>I'am <span class="home__title-color">Shridhar</span><br> a Java
-                    Devloper
-                </h1>
-
-                <a href="#contact" class="button">Hire me</a>
-            </div>
-
-            <div class="home__social">
-                <a href="https://www.linkedin.com/in/shridhar-varadkar-175832244" class="home__social-icon"><i
-                        class='bx bxl-linkedin'></i></a>
-                <a href="https://twitter.com/shree95485848?t=DUszOSE3Q5U1yEN3kUoeZQ&s=09" class="home__social-icon"><i
-                        class='bx bxl-twitter'></i></a>
-                <a href="https://github.com/Shridhar-Varadkar" class="home__social-icon"><i
-                        class='bx bxl-github'></i></a>
-            </div>
-
-            <div class="home__img">
-                <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <mask id="mask0" mask-type="alpha">
-                        <path
-                            d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-                    </mask>
-                    <g mask="url(#mask0)">
-                        <path
-                            d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-                        <image class="home__blob-img" x="50" y="60" href="./home-right.webp" />
-                    </g>
-                </svg>
-            </div>
-        </section>
-
-        <!--===== ABOUT =====-->
-        <section class="about section " id="about">
-            <h2 class="section-title">About</h2>
-
-            <div class="about__container bd-grid">
-                <div class="about__img">
-                    <img src="./profile1.JPG" alt="">
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="glowing-circle"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-title-wrapper">
+                        <h1 class="hero-title">
+                            <span class="line">Hello, I'm</span>
+                            <span class="line highlight">Shridhar</span>
+                            <span class="line">Java Developer</span>
+                        </h1>
+                    </div>
+                    <p class="hero-subtitle">Crafting robust and scalable web solutions</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Hire me</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                        <div class="social-links">
+                            <a href="https://github.com/Shridhar-Varadkar" class="social-icon" data-tooltip="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/shridhar-varadkar-175832244" class="social-icon" data-tooltip="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            </a>
+                            <a href="https://twitter.com/shree95485848" class="social-icon" data-tooltip="Twitter">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
-                <div>
-                    <h2 class="about__subtitle">I'am Shridhar</h2>
-                    <p class="about__text">
-                        &nbsp; &nbsp; &nbsp; My name is Shridhar Varadkar, and I recently graduated in 2022. I am
-                        currently
-                        enrolled in
-                        a full-stack
-                        development course at the prestigious ItVedant Institute. With a strong foundation in Java and
-                        proficiency in SQL, I possess the technical skills required for effective backend development.
-                        Additionally, I am well-versed in HTML, CSS, JavaScript, JDBC, JSP, and servlets, which enables
-                        me to
-                        handle front-end development with ease. I am well-prepared to take on the challenges of a Java
-                        developer
-                        role.
-                        <br>
-                        &nbsp; &nbsp; &nbsp; I continue to expand my knowledge,I am currently exploring the intricacies
-                        of the
-                        Spring
-                        framework,
-                        which serves as a crucial component in modern Java development. This comprehensive skill set
-                        allows me
-                        to seamlessly integrate various technologies, ensuring smooth and efficient functioning of web
-                        applications.
-                        My dedication to staying up-to-date with the latest industry trends and my
-                        commitment to continuous learning make me a valuable asset in a fast-paced and evolving
-                        technological
-                        landscape.
-                    </p><br>
-                    <a href="https://drive.google.com/file/d/1zDJnYiE0sFhWdQomco_PZlo_ClVeg9HV/view?usp=drive_link"
-                        class="button">Resume</a>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Developer">
+                        <div class="image-overlay"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!--===== SKILLS =====-->
-        <section class="skills section" id="skills">
-            <h2 class="section-title">Skills</h2>
-
-            <div class="skills__container bd-grid">
-                <div>
-                    <h2 class="skills__subtitle">Profesional Skills</h2>
-
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class="bx bxl-html5 skills__icon" style="color: #e34c26;"></i>
-                            <span class="skills__name">HTML5</span>
-                        </div>
-
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class="bx bxl-css3 skills__icon" style="color: #264de4;"></i>
-                            <span class="skills__name">CSS3</span>
-                        </div>
-
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class="bx bxl-javascript skills__icon" style="color: #F0DB4F;"></i>
-                            <span class="skills__name">JAVASCRIPT</span>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="./profile1.JPG" alt="Shridhar Varadkar">
+                            <div class="image-overlay"></div>
                         </div>
                     </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class="fa-brands fa-java skills__icon" style="color: #f89820;"></i>
-                            <span class="skills__name">Java</span>
-                        </div>
-
+                    <div class="about-text">
+                        <h3>I'm Shridhar</h3>
+                        <p>A passionate Java developer who graduated in 2022, currently enhancing my skills through a comprehensive full-stack development course at ItVedant Institute. My expertise lies in Java and SQL, forming a solid foundation for backend development.</p>
+                        <p>My technical arsenal includes HTML, CSS, JavaScript, JDBC, JSP, and servlets, enabling me to create seamless front-end experiences. I'm currently exploring Spring framework to stay ahead in modern development practices.</p>
+                        <a href="https://drive.google.com/file/d/1zDJnYiE0sFhWdQomco_PZlo_ClVeg9HV/view?usp=drive_link" 
+                           class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <span>View Resume</span>
+                            <div class="btn-glow"></div>
+                        </a>
                     </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class="fa-solid fa-leaf skills__icon" style="color: #36a636;"></i>
-                            <span class="skills__name">Springboot</span>
-                        </div>
-                    </div>
-                    <div class="skills__data">
-                        <div class="skills__names">
-                            <i class="fa-solid fa-database skills__icon" style="color: #f77c8c;"></i>
-                            <span class="skills__name">SQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <p class="skills__text">&nbsp; &nbsp; &nbsp;About my technical skills, I have hands-on experience in
-                        Java and SQL, and a
-                        good knowledge of HTML, CSS, and JavaScript, I have the skills necessary to create dynamic and
-                        robust web applications. I am well-versed in various technologies, including JDBC, JSP,
-                        Servlets, Spring MVC, and RestAPI, which allows me to develop server-side applications that can
-                        handle complex business logic, integrate with databases, and provide secure and scalable
-                        services to clients. <br>
-
-                        &nbsp; &nbsp; &nbsp;My proficiency in Java and SQL enables me to create complex algorithms,
-                        write efficient queries,
-                        and design and manage databases that can store and retrieve large amounts of data. This skillset
-                        is essential in software development, as it ensures that the software is reliable, efficient,
-                        and can handle large amounts of data.
-
-                        Furthermore, my understanding of JDBC, JSP, Servlets, Spring MVC, and RestAPI means that I can
-                        create scalable server-side applications that can handle complex business logic..</p>
                 </div>
             </div>
         </section>
 
-        <!--===== Expertise =====-->
-        <section class="work section" id="expertise">
-            <h2 class="section-title">Expertise</h2>
-
-            <section class="expertise" id="expertise">
-                <div class="content">
-                    <div class="boxes">
-                        <div class="box">
-                            <div class="icon">
-                                <i class="fas fa-desktop fa-beat-fade fa-lg"></i>
-                            </div>
-                            <div class="topic">Web Devlopment</div>
-                            <p>I am a Web developer with skills like HTML, CSS, and JavaScript which create stunning
-                                user interfaces that
-                                are responsive and accessible on different devices and platforms.</p>
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
+                <div class="skills-grid">
+                    <div class="skill-card" data-skill="90">
+                        <div class="skill-icon">
+                            <svg class="skill-svg" viewBox="0 0 100 100">
+                                <circle class="skill-circle" cx="50" cy="50" r="45"/>
+                                <circle class="skill-progress" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <span class="skill-percentage">90%</span>
                         </div>
-
-                        <div class="box">
-                            <div class="icon">
-                                <i class="fa-brands fa-java fa-beat-fade fa-2xl"></i>
-                            </div>
-                            <div class="topic">Java Development</div>
-                            <p>I have skills in Java development, I possess expertise in using the Java programming
-                                language to develop
-                                robust and scalable web applications. With skills in JDBC, JSP, Servlets, and Spring, I
-                                can create dynamic
-                                and responsive web applications that provide a seamless user experience.</p>
+                        <h3>HTML5</h3>
+                    </div>
+                    <div class="skill-card" data-skill="85">
+                        <div class="skill-icon">
+                            <svg class="skill-svg" viewBox="0 0 100 100">
+                                <circle class="skill-circle" cx="50" cy="50" r="45"/>
+                                <circle class="skill-progress" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <span class="skill-percentage">85%</span>
                         </div>
+                        <h3>CSS3</h3>
+                    </div>
+                    <div class="skill-card" data-skill="80">
+                        <div class="skill-icon">
+                            <svg class="skill-svg" viewBox="0 0 100 100">
+                                <circle class="skill-circle" cx="50" cy="50" r="45"/>
+                                <circle class="skill-progress" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <div class="skill-card" data-skill="95">
+                        <div class="skill-icon">
+                            <svg class="skill-svg" viewBox="0 0 100 100">
+                                <circle class="skill-circle" cx="50" cy="50" r="45"/>
+                                <circle class="skill-progress" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <h3>Java</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <div class="box">
-                            <div class="icon">
-                                <i class="fa-sharp fa-solid fa-gear fa-beat-fade fa-lg"></i>
+        <!-- Expertise Section -->
+        <section id="expertise" class="expertise">
+            <div class="container">
+                <h2 class="section-title">My <span class="highlight">Expertise</span></h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="card-content">
+                            <div class="expertise-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
                             </div>
-                            <div class="topic">RestAPI</div>
-                            <p>I am also good in Springboot, a popular Java framework that provides an array of features
-                                and tools to
-                                facilitate the development of RestAPIs. Springboot enables me to quickly develop and
-                                deploy robust and
-                                scalable RestAPIs with minimal configuration required.</p>
+                            <h3>Web Development</h3>
+                            <p>Creating responsive and dynamic web applications using modern technologies and best practices.</p>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="card-content">
+                            <div class="expertise-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4L9 15l-5-5"/></svg>
+                            </div>
+                            <h3>Java Development</h3>
+                            <p>Building robust backend systems and applications using Java and related frameworks.</p>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="card-content">
+                            <div class="expertise-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                            </div>
+                            <h3>API Development</h3>
+                            <p>Designing and implementing RESTful APIs using Spring Boot and modern architecture patterns.</p>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="card-content">
+                            <h3>Customer Management</h3>
+                            <p>Spring MVC project for customer details using Thymeleaf and MySQL</p>
+                            <a href="https://github.com/Shridhar-Varadkar/Spring_MVC_Customer.git" class="btn btn-outline">
+                                <span>View Project</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-content">
+                            <h3>Bus Reservation</h3>
+                            <p>REST API for bus reservation system using Spring Boot and MySQL</p>
+                            <a href="https://github.com/Shridhar-Varadkar/Rest_API_Bus_Reservation.git" class="btn btn-outline">
+                                <span>View Project</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="card-content">
+                            <h3>Student Management</h3>
+                            <p>REST API for student management with CRUD operations</p>
+                            <a href="https://github.com/Shridhar-Varadkar/RestAPI-CRUD-Student.git" class="btn btn-outline">
+                                <span>View Project</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-            </section>
-
-            <!--===== Projects =====-->
-            <section class="work section" id="projects">
-                <h2 class="section-title">Projects</h2>
-
-                <section class="expertise" id="expertise">
-                    <div class="content">
-                        <div class="boxes">
-                            <div class="box">
-                                <div class="topic">Customer Management</div>
-                                <div class="topic">* SPRING MVC *</div>
-                                <p>It is a Spring MVC project on Customer Details using Thymleaf text, HTML forms and
-                                    MySQL database.</p>
-                                <a href="https://github.com/Shridhar-Varadkar/Spring_MVC_Customer.git"><button
-                                        class="Pview">View</button></a>
-                            </div>
-
-                            <div class="box">
-                                <div class="topic">Bus Reservation</div>
-                                <div class="topic">* REST API *</div>
-                                <p>Created Rest API for Crud operations on Bus reservation model using Springboot, Java
-                                    and Mysql. It includes dependencies like Lombok and RestRepository.</p>
-                                <a href="https://github.com/Shridhar-Varadkar/Rest_API_Bus_Reservation.git"><button
-                                        class="Pview">View</button></a></button>
-                            </div>
-
-                            <div class="box">
-                                <div class="topic">Nutan Institute</div>
-                                <div class="topic">* REST API *</div>
-                                <p>Created Rest API for Crud operations on multiple models using Springboot, Java
-                                    and Mysql with controllers, services and auditing.</p>
-                                <a href="https://github.com/Shridhar-Varadkar/"><button class="Pview">View</button></a>
-                            </div>
-
-                            <div class="box">
-                                <div class="topic">Student Management</div>
-                                <div class="topic">* REST API *</div>
-                                <p>Created Rest API for Crud operations on Student model using Springboot, Java
-                                    and Mysql with controllers, services and auditing.</p>
-                                <a href="https://github.com/Shridhar-Varadkar/RestAPI-CRUD-Student.git"><button
-                                        class="Pview">View</button></a>
-                            </div>
-
-                            <div class="box">
-                                <div class="topic">My Portfolio</div>
-                                <p>I am a Web developer with skills like HTML, CSS, and JavaScript. Using this skills I
-                                    created stunning
-                                    user interfaces of my online portfolio and It shows about me, my skills and my
-                                    projects.</p>
-                                <a href="https://shridhar-varadkar.github.io/Portfolio/"><button
-                                        class="Pview">View</button></a>
-
-                            </div>
-
-                            <div class="box">
-                                <div class="topic">Employee Management</div>
-                                <div class="topic">* Console Based *</div>
-                                <p> It is a console based Student Management project which created using Java, JDBC and
-                                    Mysql.</p>
-
-                                <a href="https://github.com/Shridhar-Varadkar/Employee_Management-console_based.git"><button
-                                        class="Pview">View</button></a>
-                            </div>
-                        </div>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
+                <form class="contact-form" action="mailto:hemantvaradkar2000@gmail.com" method="POST" enctype="text/plain">
+                    <div class="form-group">
+                        <input type="text" name="name" required>
+                        <label>Your Name</label>
+                        <div class="line"></div>
                     </div>
-
-                </section>
-
-                <!--===== CONTACT =====-->
-                <section class="contact section" id="contact">
-                    <h2 class="section-title">Contact</h2>
-                    <p class="about__text cont_p">If you are looking to hire a skilled Java developer, I would be
-                        delighted to
-                        join your team and bring my
-                        expertise and experience to your projects. With a strong background in Java development, I have
-                        hands-on
-                        experience with Java, JDBC, JSP, Servlets, Spring, Springboot, and more.</p>
-
-                    <div class="contact__container bd-grid" id="contact">
-                        <form class="contact__form" action="mailto:hemantvaradkar2000@gmail.com" method="POST"
-                            enctype="text/plain">
-                            <input class="contact__input" type="text" name="name" placeholder="Your Name" required>
-                            <input class="contact__input" type="email" name="email" placeholder="Your Email" required>
-                            <input class="contact__input" type="tel" name="phone" placeholder="Your Mobile Number"
-                                required>
-                            <textarea class="contact__input" name="message" cols="35" rows="10"
-                                placeholder="How Can I Help You" required></textarea>
-                            <button class="contact__button button type=" submit" class="btn submit">Send Mail</button>
-                        </form>
+                    <div class="form-group">
+                        <input type="email" name="email" required>
+                        <label>Your Email</label>
+                        <div class="line"></div>
                     </div>
-
-
-                </section>
+                    <div class="form-group">
+                        <textarea name="message" required></textarea>
+                        <label>Your Message</label>
+                        <div class="line"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!--===== FOOTER =====-->
     <footer class="footer">
-        <p class="footer__title">Designed By Shree</p>
-        <div class="footer__social">
-            <a href="https://www.facebook.com/hemant.varadkar.7?mibextid=ZbWKwL" class="footer__icon"><i
-                    class='bx bxl-facebook'></i></a>
-            <a href="https://instagram.com/shree_varadkar07?igshid=OTk0YzhjMDVlZA==" class="f_icon_inst"><i
-                    class='bx bxl-instagram'></i></a>
-            <a href="https://twitter.com/shree95485848?t=DUszOSE3Q5U1yEN3kUoeZQ&s=09" class="footer__icon"><i
-                    class='bx bxl-twitter'></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2024 Shridhar Varadkar. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/hemant.varadkar.7" class="social-icon" data-tooltip="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://instagram.com/shree_varadkar07" class="social-icon" data-tooltip="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://twitter.com/shree95485848" class="social-icon" data-tooltip="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <a class="footer__mail" href="mailto:hemantvaradkar2000@gmail.com">hemantvaradkar2000@gmail.com</a>
     </footer>
 
-
-    <!--===== SCROLL REVEAL =====-->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!--===== MAIN JS =====-->
-    <script src="./main.js"></script>
+    <script src="main.js"></script>
 </body>
-
 </html>
