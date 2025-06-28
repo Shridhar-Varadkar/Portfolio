@@ -1,43 +1,47 @@
-/*=========== NAV ACTIVE ON SCROLL ===========*/
-const sections = document.querySelectorAll("section[id]");
-function scrollActive() {
-    const scrollY = window.pageYOffset;
-    sections.forEach((current) => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 50;
-        const sectionId = current.getAttribute("id");
+// main.js
 
-        const navLink = document.querySelector(
-            ".nav__menu a[href*=" + sectionId + "]"
-        );
-        if (navLink) {
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLink.classList.add("active");
-            } else {
-                navLink.classList.remove("active");
-            }
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    // Typed.js effect for dynamic typing in hero section
+    var typed = new Typed(".typed-text", {
+        strings: [
+            "Java Developer",
+            "Spring MVC Expert",
+            "Backend API Developer",
+            "Problem Solver"
+        ],
+        typeSpeed: 50,
+        backSpeed: 25,
+        loop: true
     });
-}
-window.addEventListener("scroll", scrollActive);
 
-/*=========== TYPED TEXT ===========*/
-const typed = new Typed(".typed-text", {
-    strings: ["Java Developer", "Spring Boot Engineer", "Backend API Builder", "Problem Solver"],
-    typeSpeed: 60,
-    backSpeed: 40,
-    loop: true
-});
+    // ScrollReveal animations
+    ScrollReveal().reveal('.section-title', {
+        delay: 200,
+        origin: 'top',
+        distance: '30px',
+        duration: 1000,
+        easing: 'ease-in-out'
+    });
 
-/*=========== AOS INIT ===========*/
-AOS.init({
-    duration: 1000,
-    once: true
-});
+    ScrollReveal().reveal('.card', {
+        interval: 200,
+        origin: 'bottom',
+        distance: '40px',
+        duration: 1200,
+        easing: 'ease-in-out'
+    });
 
-/*=========== SCROLL REVEAL ===========*/
-ScrollReveal().reveal('section', {
-    delay: 200,
-    distance: '50px',
-    origin: 'bottom'
+    ScrollReveal().reveal('form input, form textarea, form button', {
+        interval: 100,
+        origin: 'left',
+        distance: '30px',
+        duration: 1000,
+        easing: 'ease-in-out'
+    });
+
+    // Initialize AOS
+    AOS.init({
+        duration: 1200,
+        once: true
+    });
 });
