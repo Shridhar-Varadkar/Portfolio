@@ -12,17 +12,11 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(120deg, #f5f7fa, #c3cfe2);
-    color: #1a1a1a;
+    font-family: 'SF Pro Display', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #000000;
+    color: #ffffff;
     line-height: 1.6;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease-in-out;
 }
 
 ul {
@@ -32,6 +26,11 @@ ul {
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0a84ff;
 }
 
 /*===== CONTAINER =====*/
@@ -44,9 +43,9 @@ a {
 /*===== HEADER =====*/
 .header {
     width: 100%;
-    background: #ffffffcc;
+    background: #0a0a0aee;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(255,255,255,0.05);
     position: fixed;
     top: 0;
     z-index: 100;
@@ -63,7 +62,7 @@ a {
 .nav__logo {
     font-size: 2rem;
     font-weight: bold;
-    color: #007bff;
+    color: #0a84ff;
 }
 
 .nav__menu {
@@ -73,15 +72,15 @@ a {
 
 .nav__link {
     font-size: 1rem;
-    color: #333;
+    color: #bbb;
     transition: 0.3s;
     padding-bottom: 0.2rem;
 }
 
 .nav__link:hover,
 .nav__link.active-link {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    color: #0a84ff;
+    border-bottom: 2px solid #0a84ff;
 }
 
 .nav__toggle {
@@ -98,7 +97,7 @@ a {
     font-weight: 700;
     text-align: center;
     margin-bottom: 2.5rem;
-    color: #007bff;
+    color: #0a84ff;
     position: relative;
 }
 
@@ -115,48 +114,37 @@ a {
 }
 
 .home__title {
-    font-size: 2.8rem;
-    color: #1a1a1a;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
 }
 
 .home__subtitle {
     font-size: 1.4rem;
-    color: #444;
+    color: #aaaaaa;
     margin: 0.5rem 0;
 }
 
 .home__description {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    color: #cccccc;
 }
 
 .button {
     display: inline-block;
-    background: #007bff;
-    color: #fff;
+    background: #0a84ff;
+    color: #ffffff;
     padding: 0.9rem 1.7rem;
-    border-radius: 10px;
-    transition: 0.4s;
+    border-radius: 12px;
     font-weight: 500;
-    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+    transition: 0.4s;
+    box-shadow: 0 6px 20px rgba(10,132,255,0.3);
 }
 
 .button:hover {
-    background: #0056b3;
+    background: #006fe6;
     transform: scale(1.05);
-}
-
-/*===== ABOUT =====*/
-.about__img img {
-    width: 100%;
-    border-radius: 1rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-.about__content p {
-    margin-bottom: 1.5rem;
-    color: #555;
-    font-size: 1.05rem;
 }
 
 /*===== SKILLS =====*/
@@ -167,19 +155,18 @@ a {
 }
 
 .skills__item {
-    background: #ffffffcc;
-    backdrop-filter: blur(10px);
+    background: #111111;
     border-radius: 15px;
     padding: 1.2rem;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 16px rgba(255,255,255,0.05);
     font-size: 1rem;
-    color: #333;
+    color: #ddd;
     transition: transform 0.3s ease;
 }
 
 .skills__item:hover {
     transform: scale(1.08);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 28px rgba(10,132,255,0.15);
 }
 
 /*===== PROJECTS =====*/
@@ -188,20 +175,21 @@ a {
 }
 
 .project__card {
-    background: #ffffff;
+    background: #1a1a1a;
     padding: 1.8rem;
     border-radius: 1.5rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 20px rgba(255,255,255,0.05);
     transition: transform 0.3s;
+    color: #eee;
 }
 
 .project__card:hover {
     transform: translateY(-12px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 28px rgba(10,132,255,0.1);
 }
 
 .project__card h3 {
-    color: #007bff;
+    color: #0a84ff;
     margin-bottom: 0.7rem;
     font-weight: 600;
 }
@@ -215,19 +203,20 @@ a {
 
 .contact__input {
     padding: 0.9rem;
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     border-radius: 8px;
     font-size: 1rem;
-    background: #fdfdfd;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    background: #111;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(255,255,255,0.05);
 }
 
 /*===== FOOTER =====*/
 .footer {
     text-align: center;
     padding: 2.5rem 0;
-    background: #f0f0f0;
-    color: #333;
+    background: #0d0d0d;
+    color: #888;
     font-size: 1rem;
     font-weight: 400;
 }
