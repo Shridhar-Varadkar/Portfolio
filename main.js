@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
         backSpeed: 30,
         backDelay: 2000,
         startDelay: 500,
-        loop: true
+        loop: true,
+        showCursor: true,
+        cursorChar: '|'
     });
 
     // ScrollReveal animations
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         reset: false
     });
 
-    ScrollReveal().reveal('.typed-text, .btn, .form-control, .footer', {
+    ScrollReveal().reveal('.typed-text, .btn, .form-control, .footer, .animated-word', {
         origin: 'left',
         distance: '40px',
         duration: 1000,
@@ -51,5 +53,35 @@ document.addEventListener("DOMContentLoaded", function () {
         easing: 'ease-in-out-cubic'
     });
 
-    // Optional: Add parallax or background effects here if needed
+    // Create floating animated words in a circular orbit
+    const words = ["Java", "Spring", "MySQL", "Elasticsearch", "API", "SIEM", "Cloud", "Git", "Security"];
+    const orbitContainer = document.createElement("div");
+    orbitContainer.className = "orbit-container";
+    document.body.appendChild(orbitContainer);
+
+    words.forEach((word, index) => {
+        const span = document.createElement("span");
+        span.className = "animated-word";
+        span.textContent = word;
+        orbitContainer.appendChild(span);
+    });
+
+    // Animate orbiting effect
+    const animateOrbit = () => {
+        const elements = document.querySelectorAll(".animated-word");
+        const radius = 100;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2.2;
+        const time = Date.now() / 1000;
+
+        elements.forEach((el, i) => {
+            const angle = time + i * (2 * Math.PI / elements.length);
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+            el.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        requestAnimationFrame(animateOrbit);
+    };
+    animateOrbit();
 });
