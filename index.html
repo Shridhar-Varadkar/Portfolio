@@ -1,147 +1,186 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shridhar Varadkar | Java Developer Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    body {
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    header {
-      background: #161b22;
-      padding: 1rem 0;
-    }
-    .nav-link {
-      color: #c9d1d9;
-    }
-    .nav-link.active, .nav-link:hover {
-      color: #58a6ff;
-    }
-    .section {
-      padding: 4rem 0;
-    }
-    .btn-primary {
-      background-color: #238636;
-      border-color: #238636;
-    }
-    .btn-primary:hover {
-      background-color: #2ea043;
-      border-color: #2ea043;
-    }
-    .typed-text {
-      color: #58a6ff;
-      font-weight: 600;
-      font-size: 1.5rem;
-    }
-    .box {
-      background: #161b22;
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-    .box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 20px rgba(90, 90, 90, 0.2);
-    }
-    footer {
-      background: #161b22;
-      padding: 2rem;
-      text-align: center;
-      color: #8b949e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Shridhar | Java Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Boxicons + FontAwesome -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        #home {
+            background: linear-gradient(135deg, #111111, #1a1a1a);
+            padding: 80px 0;
+        }
+
+        .typed-text {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #0dcaf0;
+        }
+
+        .button,
+        .btn {
+            border: 2px solid #0dcaf0;
+            color: #0dcaf0;
+            background-color: transparent;
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button:hover,
+        .btn:hover {
+            background-color: #0dcaf0;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(13, 202, 240, 0.5);
+        }
+
+        footer {
+            background-color: #000000;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        footer .bx {
+            font-size: 1.5rem;
+            color: #0dcaf0;
+            margin: 0 10px;
+            transition: 0.3s ease;
+        }
+
+        footer .bx:hover {
+            color: #ffffff;
+        }
+
+        .nav__menu a.active {
+            color: #0dcaf0 !important;
+            border-bottom: 2px solid #0dcaf0;
+        }
+    </style>
 </head>
 
 <body>
-  <header class="fixed-top shadow-sm">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">Shridhar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          </ul>
+
+    <!-- Header & Hero -->
+    <section id="home" class="text-center">
+        <div class="container">
+            <h1 class="display-4">Hi, I'm Shridhar</h1>
+            <p class="typed-text mt-2"></p>
+            <a href="#contact" class="btn mt-4">Hire Me</a>
         </div>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container" style="padding-top: 6rem;">
-    <section id="home" class="text-center section">
-      <h1>Hello, I'm <span class="text-primary">Shridhar Varadkar</span></h1>
-      <div class="typed-text mb-3"></div>
-      <p class="lead">2 Years of Experience | Java Developer | Backend Specialist</p>
-      <a href="#contact" class="btn btn-primary">Hire Me</a>
     </section>
 
-    <section id="about" class="section" data-aos="fade-up">
-      <h2>About Me</h2>
-      <p>
-        I am a passionate Java Developer with 2 years of experience in backend development using Java, Spring Boot,
-        and REST APIs. I specialize in building scalable web applications and solving real-world problems through clean
-        code and architecture. My toolkit includes JDBC, JSP, Servlets, Hibernate, and MySQL. I love to learn and keep
-        up with the latest trends in backend technologies.
-      </p>
+    <!-- About -->
+    <section id="about" class="container my-5" data-aos="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <p>Hello! I'm a passionate Java Developer with 2 years of experience in Java, Spring Boot, REST APIs, and SQL. I build backend systems that are clean, scalable, and secure.</p>
     </section>
 
-    <section id="skills" class="section" data-aos="fade-up">
-      <h2>Skills</h2>
-      <div class="row">
-        <div class="col-md-4 box">Java, Spring Boot, REST API, Hibernate</div>
-        <div class="col-md-4 box">JSP, Servlets, JDBC, SQL</div>
-        <div class="col-md-4 box">HTML5, CSS3, Bootstrap, JavaScript</div>
-      </div>
-    </section>
-
-    <section id="projects" class="section" data-aos="fade-up">
-      <h2>Projects</h2>
-      <div class="row">
-        <div class="col-md-6 box">
-          <h5>Customer Management (Spring MVC)</h5>
-          <p>Built using Spring MVC and Thymeleaf, managing customer CRUD with MySQL.</p>
+    <!-- Skills -->
+    <section id="skills" class="container my-5" data-aos="fade-right">
+        <h2 class="section-title">Skills</h2>
+        <div class="row text-center">
+            <div class="col"><i class="fa-brands fa-java fa-2x"></i><p>Java</p></div>
+            <div class="col"><i class="fa-solid fa-leaf fa-2x"></i><p>Spring Boot</p></div>
+            <div class="col"><i class="fa-solid fa-database fa-2x"></i><p>SQL</p></div>
+            <div class="col"><i class="fa-brands fa-html5 fa-2x"></i><p>HTML</p></div>
+            <div class="col"><i class="fa-brands fa-js fa-2x"></i><p>JavaScript</p></div>
         </div>
-        <div class="col-md-6 box">
-          <h5>Bus Reservation REST API</h5>
-          <p>REST API built with Spring Boot, CRUD operations for buses and bookings.</p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container my-5" data-aos="fade-left">
+        <h2 class="section-title">Projects</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <h5>Bus Reservation API</h5>
+                    <p>Spring Boot RESTful CRUD with MySQL</p>
+                    <a href="https://github.com/Shridhar-Varadkar/Rest_API_Bus_Reservation.git" class="btn">View</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h5>Customer Management</h5>
+                    <p>Spring MVC with Thymeleaf</p>
+                    <a href="https://github.com/Shridhar-Varadkar/Spring_MVC_Customer.git" class="btn">View</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h5>Portfolio Website</h5>
+                    <p>HTML, CSS, JavaScript</p>
+                    <a href="https://shridhar-varadkar.github.io/Portfolio/" class="btn">View</a>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="contact" class="section" data-aos="fade-up">
-      <h2>Contact</h2>
-      <p>If you're looking for a dedicated backend developer, get in touch!</p>
-      <a href="mailto:hemantvaradkar2000@gmail.com" class="btn btn-primary">Email Me</a>
+    <!-- Contact -->
+    <section id="contact" class="container my-5" data-aos="fade-up">
+        <h2 class="section-title">Contact</h2>
+        <form action="mailto:hemantvaradkar2000@gmail.com" method="POST" enctype="text/plain" class="row g-3">
+            <div class="col-md-6"><input type="text" name="name" placeholder="Name" class="form-control" required></div>
+            <div class="col-md-6"><input type="email" name="email" placeholder="Email" class="form-control" required></div>
+            <div class="col-12"><textarea name="message" rows="4" placeholder="Your message" class="form-control" required></textarea></div>
+            <div class="col-12 text-center"><button type="submit" class="btn">Send Message</button></div>
+        </form>
     </section>
-  </main>
 
-  <footer>
-    <p>Designed by Shree &copy; 2025</p>
-    <div>
-      <a href="https://github.com/Shridhar-Varadkar" class="text-light me-3"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/shridhar-varadkar-175832244" class="text-light me-3"><i class="fab fa-linkedin"></i></a>
-      <a href="https://twitter.com/shree95485848" class="text-light"><i class="fab fa-twitter"></i></a>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Shridhar Varadkar</p>
+        <a href="https://github.com/Shridhar-Varadkar" class="bx bxl-github"></a>
+        <a href="https://www.linkedin.com/in/shridhar-varadkar-175832244" class="bx bxl-linkedin"></a>
+        <a href="https://twitter.com/shree95485848" class="bx bxl-twitter"></a>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="./main.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="main.js"></script>
 </body>
-
 </html>
