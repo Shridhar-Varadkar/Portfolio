@@ -47,8 +47,8 @@ const sr = ScrollReveal({
     distance: '60px',
     duration: 1500,
     delay: 200,
-    easing: 'ease-in-out',
-    reset: false
+    easing: 'ease',
+    mobile: true
 });
 
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {});
@@ -58,7 +58,7 @@ sr.reveal('.skills__data, .work__img, .contact__input', { interval: 150 });
 
 /*===== AOS Initialization =====*/
 AOS.init({
-    duration: 1200,
+    duration: 1000,
     easing: 'ease-in-out',
     once: true,
     mirror: false
@@ -66,16 +66,8 @@ AOS.init({
 
 /*===== Typed Text Animation =====*/
 new Typed('.typed-text', {
-    strings: [
-        "Java Developer with 2 Years Experience",
-        "Backend Specialist | Spring Boot | Hibernate",
-        "Crafting Scalable APIs & RESTful Services",
-        "SQL Expert | Clean Architecture Advocate",
-        "Passionate about Problem Solving & System Design"
-    ],
-    typeSpeed: 60,
-    backSpeed: 30,
-    loop: true,
-    showCursor: true,
-    cursorChar: '|'
+    strings: ["Java Developer", "Backend Specialist", "Spring Boot Engineer", "REST API Expert"],
+    typeSpeed: 70,
+    backSpeed: 40,
+    loop: true
 });
