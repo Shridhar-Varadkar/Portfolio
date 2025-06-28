@@ -66,7 +66,7 @@ AOS.init({
 
 /*===== Typed Text Animation =====*/
 new Typed('.typed-text', {
-    strings: ["Java Developer", "Backend Specialist", "Spring Boot Engineer", "REST API Expert"],
+    strings: ["Java Developer with 2 Years Experience", "Backend Specialist", "Spring Boot Engineer", "REST API Expert"],
     typeSpeed: 70,
     backSpeed: 40,
     loop: true
