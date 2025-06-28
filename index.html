@@ -17,8 +17,9 @@
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background-color: #0b0c10;
+            background: linear-gradient(to bottom right, #0b0c10, #1f2833);
             color: #c5c6c7;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h5 {
@@ -47,6 +48,12 @@
             background-color: #1f2833;
             border: 1px solid #45a29e;
             border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(102, 252, 241, 0.3);
         }
 
         footer {
@@ -80,15 +87,15 @@
 
     <section class="container my-5" id="about" data-aos="fade-up">
         <h2 class="text-center">About Me</h2>
-        <p class="mt-3">I'm a Java Developer with 2 years of experience currently working at Velox Solutions. I have contributed to major enterprise-level projects like SIEM (Security Event Management) and Booth Management Systems using Java, Spring MVC, Elasticsearch, MySQL, and more. I aim to deliver secure, efficient, and scalable backend solutions that align with business goals.</p>
+        <p class="mt-3">I am a passionate Java Developer with 2 years of industry experience at Velox Solutions, focusing on enterprise software development using Spring MVC, REST APIs, Elasticsearch, MySQL, and security automation. I bring a keen eye for scalable architecture and a commitment to software quality.</p>
     </section>
 
     <section class="container my-5" id="skills" data-aos="fade-left">
         <h2 class="text-center">Skills</h2>
         <div class="row text-center mt-4">
             <div class="col"><i class="fa-brands fa-java fa-2x"></i><p>Java</p></div>
-            <div class="col"><i class="fa-solid fa-leaf fa-2x"></i><p>Spring Boot</p></div>
-            <div class="col"><i class="fa-solid fa-database fa-2x"></i><p>SQL</p></div>
+            <div class="col"><i class="fa-solid fa-leaf fa-2x"></i><p>Spring MVC</p></div>
+            <div class="col"><i class="fa-solid fa-database fa-2x"></i><p>MySQL</p></div>
             <div class="col"><i class="fa-brands fa-html5 fa-2x"></i><p>HTML</p></div>
             <div class="col"><i class="fa-brands fa-css3-alt fa-2x"></i><p>CSS</p></div>
             <div class="col"><i class="fa-brands fa-js fa-2x"></i><p>JavaScript</p></div>
@@ -98,23 +105,16 @@
     <section class="container my-5" id="projects" data-aos="zoom-in">
         <h2 class="text-center">Projects</h2>
         <div class="row mt-4 g-4">
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <h5>ScanPlus-SIEM</h5>
-                    <p>Real-time Security Monitoring & Log Correlation</p>
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h5>ScanPlus-SIEM (Security Information & Event Management)</h5>
+                    <p>Built a robust SIEM platform enabling real-time threat detection and response automation. Integrated Elastic Stack and UEBA, automated playbooks with SOAR, and ensured DC-DR failover architecture.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card p-3">
+            <div class="col-md-6">
+                <div class="card p-4">
                     <h5>Booth Management System</h5>
-                    <p>REST APIs for Mobile App backend with Spring MVC</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <h5>Portfolio Website</h5>
-                    <p>Fully responsive portfolio using JSP, Bootstrap & JS</p>
-                    <a class="btn btn-custom mt-2" href="https://github.com/Shridhar-Varadkar">GitHub</a>
+                    <p>Developed RESTful APIs for mobile apps enabling real-time booth level analytics, voter verification, and secure backend synchronization using Java, Spring MVC, and MySQL.</p>
                 </div>
             </div>
         </div>
@@ -165,4 +165,5 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
