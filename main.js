@@ -1,47 +1,55 @@
 // main.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Typed.js effect for dynamic typing in hero section
-    var typed = new Typed(".typed-text", {
+    // Typed.js dynamic typing effect
+    const typed = new Typed(".typed-text", {
         strings: [
             "Java Developer",
-            "Spring MVC Expert",
-            "Backend API Developer",
-            "Problem Solver"
+            "Spring Boot Specialist",
+            "Backend API Engineer",
+            "Cloud Integration Developer",
+            "SIEM Platform Builder"
         ],
-        typeSpeed: 50,
-        backSpeed: 25,
+        typeSpeed: 60,
+        backSpeed: 30,
+        backDelay: 2000,
+        startDelay: 500,
         loop: true
     });
 
     // ScrollReveal animations
     ScrollReveal().reveal('.section-title', {
-        delay: 200,
         origin: 'top',
-        distance: '30px',
+        distance: '60px',
         duration: 1000,
-        easing: 'ease-in-out'
+        delay: 200,
+        easing: 'ease-in-out',
+        reset: false
     });
 
     ScrollReveal().reveal('.card', {
-        interval: 200,
         origin: 'bottom',
         distance: '40px',
         duration: 1200,
-        easing: 'ease-in-out'
+        interval: 200,
+        easing: 'ease',
+        reset: false
     });
 
-    ScrollReveal().reveal('form input, form textarea, form button', {
-        interval: 100,
+    ScrollReveal().reveal('.typed-text, .btn, .form-control, .footer', {
         origin: 'left',
-        distance: '30px',
+        distance: '40px',
         duration: 1000,
-        easing: 'ease-in-out'
+        interval: 100,
+        reset: false
     });
 
-    // Initialize AOS
+    // AOS Initialization for added animation effect
     AOS.init({
-        duration: 1200,
-        once: true
+        duration: 1500,
+        once: true,
+        easing: 'ease-in-out-cubic'
     });
+
+    // Optional: Add parallax or background effects here if needed
 });
