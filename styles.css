@@ -14,11 +14,19 @@ html {
 
 body {
     font-family: 'SF Pro Display', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #000;
+    background: linear-gradient(135deg, #000000, #0a0a0a, #1a1a1a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: #fff;
     line-height: 1.7;
     transition: all 0.3s ease-in-out;
     overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 ul {
@@ -45,7 +53,7 @@ a:hover {
 /*===== HEADER =====*/
 .header {
     width: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     backdrop-filter: blur(30px);
     box-shadow: 0 0 30px rgba(255,255,255,0.08);
     position: fixed;
@@ -58,6 +66,7 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    flex-wrap: wrap;
 }
 
 .nav__logo {
@@ -68,7 +77,10 @@ a:hover {
 
 .nav__menu {
     display: flex;
-    gap: 2.5rem;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav__link {
@@ -86,6 +98,32 @@ a:hover {
     transform: translateY(-2px);
 }
 
+.nav__toggle {
+    display: none;
+}
+
+/* Responsive Nav Toggle */
+@media (max-width: 768px) {
+    .nav__menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background: #111;
+        padding: 1rem;
+    }
+
+    .nav__menu.active {
+        display: flex;
+    }
+
+    .nav__toggle {
+        display: block;
+        color: #00bcd4;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
 /*===== SECTION =====*/
 .section {
     padding: 8rem 0 5rem;
@@ -97,6 +135,12 @@ a:hover {
     text-align: center;
     margin-bottom: 4rem;
     color: #00bcd4;
+    animation: fadeInText 3s ease forwards;
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .grid {
@@ -116,12 +160,14 @@ a:hover {
     font-weight: 900;
     color: #ffffff;
     margin-bottom: 1rem;
+    animation: fadeInText 2s ease forwards;
 }
 
 .home__subtitle {
     font-size: 1.8rem;
     color: #aaa;
     margin-bottom: 1rem;
+    animation: fadeInText 2.5s ease forwards;
 }
 
 .home__description {
@@ -131,6 +177,7 @@ a:hover {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    animation: fadeInText 3s ease forwards;
 }
 
 .button {
@@ -143,6 +190,7 @@ a:hover {
     font-size: 1rem;
     transition: transform 0.3s ease, background 0.3s;
     box-shadow: 0 10px 30px rgba(0,188,212,0.35);
+    animation: fadeInText 3.5s ease forwards;
 }
 
 .button:hover {
