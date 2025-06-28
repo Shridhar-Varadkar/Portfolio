@@ -1,73 +1,26 @@
-/*===== MENU SHOW =====*/
-const showMenu = (toggleId, navId) => {
-    const toggle = document.getElementById(toggleId),
-        nav = document.getElementById(navId);
+// main.js
 
-    if (toggle && nav) {
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('show');
-        });
-    }
-};
-showMenu('nav-toggle', 'nav-menu');
+// Scroll Animation Init
+AOS.init();
 
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link');
-
-function linkAction() {
-    const navMenu = document.getElementById('nav-menu');
-    navMenu.classList.remove('show');
-}
-navLink.forEach(n => n.addEventListener('click', linkAction));
-
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]');
-
-function scrollActive() {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 50;
-        const sectionId = current.getAttribute('id');
-        const navLink = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLink?.classList.add('active');
-        } else {
-            navLink?.classList.remove('active');
-        }
-    });
-}
-window.addEventListener('scroll', scrollActive);
-
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 1500,
-    delay: 200,
-    easing: 'ease',
-    mobile: true
-});
-
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {});
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img, .expertise', { delay: 150 });
-sr.reveal('.home__social-icon, .footer__social', { interval: 100 });
-sr.reveal('.skills__data, .work__img, .contact__input', { interval: 150 });
-
-/*===== AOS Initialization =====*/
-AOS.init({
-    duration: 1000,
-    easing: 'ease-in-out',
-    once: true,
-    mirror: false
-});
-
-/*===== Typed Text Animation =====*/
-new Typed('.typed-text', {
-    strings: ["Java Developer", "Backend Specialist", "Spring Boot Engineer", "REST API Expert"],
-    typeSpeed: 70,
-    backSpeed: 40,
+// Typed Text Effect
+const typed = new Typed('.typed-text', {
+    strings: [
+        'Java Developer',
+        'Spring MVC Specialist',
+        'Backend Engineer',
+        'Problem Solver'
+    ],
+    typeSpeed: 60,
+    backSpeed: 30,
     loop: true
 });
+
+// ScrollReveal Animations
+ScrollReveal().reveal('#home .container', { delay: 200 });
+ScrollReveal().reveal('#about', { delay: 300 });
+ScrollReveal().reveal('#skills', { delay: 400 });
+ScrollReveal().reveal('#projects', { delay: 500 });
+ScrollReveal().reveal('#education', { delay: 600 });
+ScrollReveal().reveal('#certifications', { delay: 700 });
+ScrollReveal().reveal('#contact', { delay: 800 });
