@@ -1,119 +1,439 @@
-<!-- File: index.jsp -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shridhar Varadkar | Java Developer</title>
-
-    <!-- CSS -->
+    <title>Shrutika Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-
-    <!-- Boxicons -->
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS (Animate on Scroll) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-    <!-- HEADER -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">Shridhar</a>
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li><a href="#home" class="nav__link active-link">Home</a></li>
-                    <li><a href="#about" class="nav__link">About</a></li>
-                    <li><a href="#skills" class="nav__link">Skills</a></li>
-                    <li><a href="#projects" class="nav__link">Projects</a></li>
-                    <li><a href="#contact" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
+    <!--Header site-->
+    <header>
+        <div class="logo"><span>Shrutika.</span></div>
+        <ul class="navlist">
+            <li><a href="#home" style="--i:1;">Home</a></li>
+            <li><a href="#about" style="--i:2;">About</a></li>
+            <li><a href="#services" style="--i:3;">Experience</a></li>
+            <li><a href="#skills" style="--i:4;">Skills</a></li>
+            <li><a href="#Portfolio" style="--i:5;">Projects</a></li>
+            <li><a href="#contact" style="--i:6;">Contact</a></li>
+        </ul>
+        <div id="menu-icon" class="bx bx-menu"></div>
     </header>
-
     <!-- HOME SECTION -->
-    <section class="home section" id="home">
-        <div class="home__container container grid">
-            <div class="home__data" data-aos="fade-right">
-                <h1 class="home__title">Hello, I'm <span class="typed-text"></span></h1>
-                <h3 class="home__subtitle">Java Developer</h3>
-                <p class="home__description">Passionate about building scalable backend systems and clean web interfaces.</p>
-                <a href="#contact" class="button button--flex">Hire Me</a>
+    <section id="home" class="home">
+        <div class="home-content scroll-scale">
+            <h1>Hi there...! <br> I am Shrutika Munde.</h1>
+            <div class="change-text">
+                <h3>And I'am</h3>
+                <h3>
+                    <span class="word"> Full-Stack&nbsp; Developer.</span>
+                    <span class="word"> JAVA&nbsp; Developer.</span>
+                    <span class="word"> React&nbsp; Developer.</span>
+                </h3>
+            </div>
+            <p>
+                A passionate and dedicated individual with a strong background in software development. Skilled in
+                various programming languages such as HTML5, CSS3, JavaScript
+            </p>
+            <div class="info-box">
+                <div class="email-info">
+                    <h5>Email:</h5>
+                    <span>mundeshrutika7@gmail.com</span>
+                </div>
+            </div>
+            <div class="btn-box">
+                <a href="drive.google.com/file/d/1zLmmQizBKZFwzuaZHj8sqC3Nwjp8OLTk/view?usp=sharing" target="_blank"
+                    class="btn">Download CV</a>
+                <a href="mailto: mundeshrutika7@gmail.com" class="btn">Hire Me Now!</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/mundeshruti/" target="_blank"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/shrutika-munde-b50262231/" target="_blank">
+                    <i class="bx bxl-linkedin"></i></a>
+                <a href="mailto: mundeshrutika7@gmail.com" target="_blank">
+                    <i class='bx bxl-gmail'></i></a>
+            </div>
+        </div>
+        <div class="home-image scroll-scale">
+            <!--  <div class="img-box">
+                <img src="images/photo.jpg" alt="Profile Picture" style="height: 80%; width: 80%;" />
+            </div>
+            <div class="liquid-shape">
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="100%" id="blobSvg">
+                    <path fill="#12f7ff">
+                        <animate attributeName="d" dur="1000ms" repeatCount="indefinite" values="
+                        M372.5,341Q250,432,160,341Q70,250,160,151Q250,52,372.5,151Q495,250,372.5,341Z,
+                        M369.5,295.5Q250,341,207,295.5Q164,250,207,185.5Q250,121,369.5,185.5Q489,250,369.5,295.5Z,
+                        M372.5,341Q250,432,160,341Q70,250,160,151Q250,52,372.5,151Q495,250,372.5,341Z;
+                        ">
+                        </animate>
+
+                    </path>
+                </svg>
+
+            </div> -->
+        </div>
+    </section>
+    <!--------- ---------------------------------------------HOME SECTION -------------------------------------------->
+    <section id="about" class="about">
+        <div class="img-about scroll-scale">
+            <!-- <img src="images/poster.jpg" alt="" style="height: 200%; width: 200%;"  />
+            <div class="info-about1">
+                <span> </span>
+                <p> </p>
+            </div>
+            -->
+        </div>
+        <div class="about-content scroll-scale">
+            <span> LET ME INTRODUCE MYSELF</span>
+            <h2>ABOUT ME</h2>
+            <P>
+                Passionate and results-driven Software Developer with a B.Tech in Computer Science Engineering and extensive 
+                experience in Java, Spring Framework, React.js, and full-stack development. I thrive in dynamic, collaborative environments,
+                constantly learning and staying updated with the latest industry trends. Proficient in problem-solving, team collaboration,
+                and delivering high-quality, scalable software solutions.
+                <br>
+                Currently open to exciting opportunities in Software Field, I am eager to contribute my expertise to a
+                dynamic team that values innovation and creativity. Whether it's software development, research, or
+                engineering, I am ready to make a meaningful impact.<br><br>
+                I am always open to expanding my network and collaborating with like-minded professionals, mentors, and
+                recruiters. Whether you have a potential opportunity or would like to discuss our shared interests,
+                Feel free to reach out to me via LinkedIn messaging or at mundeshrutika7@gmail.com.<br>
+                Let's shape the future together!
+            </P>
+            <div class="btn-box">
+                <!-- <a href="#contact" class="btn">Read more</a> -->
             </div>
         </div>
     </section>
+    <!---------- Service SECTION ---------->
 
-    <!-- ABOUT SECTION -->
-    <section class="about section" id="about">
-        <div class="container grid" data-aos="fade-up">
-            <div class="about__content">
-                <h2 class="section__title">About Me</h2>
-                <p>I am Shridhar Varadkar, a Java Developer at Velox Solutions with hands-on experience in Spring MVC, REST APIs, and Elastic Stack. Passionate about crafting robust applications and exploring new technologies.</p>
-                <a href="https://drive.google.com/file/d/1JsC_LBje76gqlnyxH9yoyAziunWTtvBk/view?usp=sharing" class="button">Download Resume</a>
+    <section id="services" class="services">
+        <div class="main-text ">
+            <h2>MY EXPERIENCE </h2>
+        </div>
+        <div class="section-services scroll-scale">
+
+            <div class="service-box">
+                <i class='bx bx-code-alt service-icon'></i>
+                <h3> Software Developer</h3>
+                <p>
+                    <i><b>I am currently working at Capita India as a Software Developer, primarily focusing on
+                            React.js.</i></b>
+                <p>
+                    Currently honing my technical skills and gaining hands-on experience as a Software
+                    Developer. Actively contributing to a dynamic React project while deepening my
+                    understanding of modern frameworks and collaborative software practices.
+                    Passionate about building user-friendly applications and continuously learning to stay
+                    ahead in the tech industry.
+                </p>
+                <div class=" btn-box service-btn">
+                    <a href="https://www.capita.com/" target="_blank" class="btn">Read More</a>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <i class='bx bx-code-alt service-icon'></i>
+                <h3> Software Developer</h3>
+                <p>
+                    <i><b>I worked as a Full Stack Developer Intern at RSL Solution Private Limited.</i></b>
+                <p>
+                    In Internship Developed full-stack applications across various platforms using latest industry
+                    adopted technologies and frameworks
+                    Played a key role in the development, improvement, and operation of web-based
+                    software.Gained hands-on expertise in front-end presentation frameworks web
+                    application frameworks.
+                </p>
+                <div class=" btn-box service-btn">
+                    <a href="https://www.rslsolution.com/" target="_blank" class="btn">Read More</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!--------- ---------------------------------------------SKILL SECTION -------------------------------------------->
+    <section id="skills" class="skills">
+        <div class="main-text scroll-scale">
+            <span> Technical Skills And Tools</span>
+            <h2>My skills</h2>
+        </div>
+        <div class="skill-main">
+            <div class="skill-left scroll-scale">
+                <h3>Technical Skills</h3>
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>HTML</p>
+                        <P>95%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="HTML"></span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>CSS</p>
+                        <P>90%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="CSS"></span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>JavaScript</p>
+                        <P>90%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="JavaScript"></span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>ReactJs</p>
+                        <P>90%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="JavaScript"></span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>JAVA</p>
+                        <P>98%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="JAVA"></span>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>PHP</p>
+                        <P>90%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="PHP"></span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>SQL</p>
+                        <P>95%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="MYSQL"></span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="info">
+                        <p>SpringBoot</p>
+                        <P>90%</P>
+                    </div>
+                    <div class="bar">
+                        <span class="PHP"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="skill-right scroll-scale">
+                <h3>TOOLS</h3>
+                <div class="porfessional">
+                    <div class="box">
+                        <div class="circle" data-dots="90" data-percent="90"></div>
+                        <div class="text">
+                            <big>95%</big>
+                            <small>Visual Studio Code</small>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="circle" data-dots="90" data-percent="90"></div>
+                        <div class="text">
+                            <big>95%</big>
+                            <small>Eclipse</small>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="circle" data-dots="90" data-percent="90"></div>
+                        <div class="text">
+                            <big>95%</big>
+                            <small>XAMMP Server</small>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="circle" data-dots="80" data-percent="80"></div>
+                        <div class="text">
+                            <big>95%</big>
+                            <small>Postman</small>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="circle" data-dots="80" data-percent="80"></div>
+                        <div class="text">
+                            <big>90%</big>
+                            <small>GitHub</small>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="circle" data-dots="80" data-percent="80"></div>
+                        <div class="text">
+                            <big>90%</big>
+                            <small>MYSQL QueryBrowser</small>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="circle" data-dots="80" data-percent="80"></div>
+                        <div class="text">
+                            <big>98%</big>
+                            <small>VS Code</small>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="circle" data-dots="80" data-percent="80"></div>
+                        <div class="text">
+                            <big>90%</big>
+                            <small>SSMS</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    <!-- -----------------------------------------------Projects----------------------------------------- ------------>
+    <section id="Portfolio" class="Portfolio">
+        <div class="main-text scroll-scale">
+            <!--             <span> Technical Skills And Tools</span> -->
+            <h2>Latest Projects</h2>
+        </div>
+        <div class="container">
+            <div class="filter-buttons scroll-scale">
+                <button class="button" data-filter="all">All</button>
+                <button class="button" data-filter=".product">Product</button>
+                <button class="button" data-filter=".interacting">Interacting</button>
+                <button class="button" data-filter="all">Web App</button>
+            </div>
+            <div class="portfolio-gallery scroll-bottom">
+                <div class="port-box mix interacting">
+                    <div class="port-image">
+                        <img src="images/p4.avif" alt="" />
+                    </div>
+                    <div>
+                        <div class="port-content">
+                            <h3> Paying Guest Accommodation</h3>
+                            <!--                             <p>A web application that allows users to book a room.
+                            </p> -->
+                            <a href="https://github.com/mundeshruti/" target="_blank"><i
+                                    class='bx bx-link-external'></i></a>
 
-    <!-- SKILLS SECTION -->
-    <section class="skills section" id="skills">
-        <h2 class="section__title" data-aos="fade-up">Skills</h2>
-        <div class="skills__container container grid" data-aos="zoom-in-up">
-            <div class="skills__item"><i class="fab fa-java"></i> Java</div>
-            <div class="skills__item"><i class="fas fa-leaf"></i> Spring MVC</div>
-            <div class="skills__item"><i class="fas fa-database"></i> MySQL</div>
-            <div class="skills__item"><i class="fab fa-html5"></i> HTML</div>
-            <div class="skills__item"><i class="fab fa-css3"></i> CSS</div>
-            <div class="skills__item"><i class="fab fa-js"></i> JavaScript</div>
-            <div class="skills__item"><i class="fas fa-search"></i> Elasticsearch</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-box mix product">
+                    <div class="port-image">
+                        <img src="images/parking.jpeg" alt="" />
+                    </div>
+                    <div>
+                        <div class="port-content">
+                            <h3> Fast-track vehicle Parking System </h3>
+                            <!--                             <p>
+                                A web site for managing parking spaces and vehicles, with real time tracking of each vehicle.
+                            </p> -->
+                            <a href="https://github.com/mundeshruti/"><i class='bx bx-link-external'></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="port-box mix interacting">
+                    <div class="port-image">
+                        <img src="images/project3.jpeg" alt="" />
+                    </div>
+                    <div>
+                        <div class="port-content">
+                            <h3 style="color: white;"> Learning Management System</h3>
+                            <p>
+                            </p>
+                            <a href="https://github.com/mundeshruti/LMS_Project" target="_blank"><i
+                                    class='bx bx-link-external'></i></a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-box mix interacting">
+                    <div class="port-image">
+                        <img src="images/back.jpg" alt="" />
+                    </div>
+                    <div>
+                        <div class="port-content">
+                            <h3 style="color: white;"> Smart Contact Manager</h3>
+                            <p>
+                            </p>
+                            <a href="https://github.com/mundeshruti/Smart_Contact_Management" target="_blank"><i
+                                    class='bx bx-link-external'></i></a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-box mix interacting">
+                    <div class="port-image">
+                        <img src="images/cars.jpg" alt="" />
+                    </div>
+                    <div>
+                        <div class="port-content">
+                            <h3 style="color: white;"> Car Rental System</h3>
+                            <p>
+                            </p>
+                            <a href="https://github.com/mundeshruti/" target="_blank"><i
+                                    class='bx bx-link-external'></i></a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
-
-    <!-- PROJECTS SECTION -->
-    <section class="projects section" id="projects">
-        <h2 class="section__title" data-aos="fade-up">Projects</h2>
-        <div class="projects__container container grid" data-aos="fade-up">
-            <div class="project__card">
-                <h3>SIEM System</h3>
-                <p>Real-time security monitoring with UEBA & SOAR integration.</p>
-            </div>
-            <div class="project__card">
-                <h3>SOAR</h3>
-                <p>Automating and streamlining the entire security incident lifecycle</p>
-            </div>
-
-            <div class="project__card">
-                <h3>Booth Management</h3>
-                <p>Mobile-based API project for election booth control.</p>
-            </div>
-         </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="contact section" id="contact">
-        <h2 class="section__title" data-aos="fade-up">Contact Me</h2>
-        <div class="contact__container container grid" data-aos="fade-up">
-            <form action="mailto:hemantvaradkar2000@gmail.com" class="contact__form">
-                <input type="text" placeholder="Your Name" class="contact__input" required>
-                <input type="email" placeholder="Your Email" class="contact__input" required>
-                <textarea placeholder="Your Message" class="contact__input" rows="5" required></textarea>
-                <button type="submit" class="button">Send Message</button>
-            </form>
+    <!-- End Portfolio Section -->
+    <section id="contact" class="contact">
+        <div class="main-text scroll-scale">
+            <span>Ask me question</span>
+            <h2>Contact me</h2>
         </div>
+        <form action="https://api.web3forms.com/submit" class="scroll-scale" method="post">
+            <input type="hidden" name="access_key" value="3d7532f4-3d76-42cd-8cf6-d7d118c6c829">
+            <input type="text" placeholder="Your Name" name="name" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="text" placeholder="your Address" name="address" required>
+            <input type="number" placeholder="phone number" name="phone" required>
+            <input type="text" textarea name="message" id="" cols="30" rows="40" placeholder="Your Message"></textarea>
+            <div class="btn-box formBtn">
+                <button type="submit" class="btn">Send Message</button>
+            </div>
+        </form>
     </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>&copy; 2025 <span>Shridhar Varadkar</span>. All rights reserved.</p>
+    <!--footer website-->
+    <footer>
+        <p class="scroll-scale">
+            © 2025 - Developed by <strong>Shrutika Munde</strong>
+        </p>
+        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
     </footer>
-
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="main.js"></script>
+    <script src="mixitup.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
