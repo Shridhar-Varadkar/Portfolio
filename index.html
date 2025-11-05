@@ -11,34 +11,34 @@
 
 <body>
 
-    <!-- 🌐 Shrii Assistant Chatbot -->
-<div class="chatbot-container" id="shriiChatbot">
-  <button id="chatbotToggle" class="chatbot-toggle">
-    <i class="fas fa-comments"></i>
+<!-- 🌐 Shrii Assistant Chatbot -->
+<div id="chatbot-container">
+  <button id="chatToggle" class="chat-toggle">
+    <i class='bx bx-message-dots'></i>
   </button>
 
-  <div class="chatbot-box">
-    <div class="chatbot-header">
-      <h3>🤖 Shrii Assistant</h3>
-      <button id="closeChatbot"><i class="fas fa-times"></i></button>
+  <div id="chatbot" class="chatbot">
+    <div class="chat-header">
+      <i class='bx bx-bot'></i>
+      <span>Shrii Assistant</span>
+      <button id="closeChat" class="close-chat"><i class='bx bx-x'></i></button>
     </div>
-
-    <div class="chatbot-messages" id="chatbotMessages">
+    <div id="chatMessages" class="chat-messages">
       <div class="message bot">
         <div class="message-content">
-          <p>Hi there 👋, I’m <strong>Shrii Assistant</strong> — your personal guide to <strong>Shridhar Varadkar’s</strong> portfolio.<br>
-          You can ask about his <em>skills, projects, or schedule an interview!</em></p>
+          <p>Hi there! 👋 I’m Shrii Assistant.<br>How can I help you today?</p>
+          <span class="timestamp">Just now</span>
         </div>
       </div>
     </div>
-
-    <div class="chatbot-input">
-      <input type="text" id="chatbotInput" placeholder="Type your message..." />
-      <button id="chatbotVoice"><i class="fas fa-microphone"></i></button>
-      <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+    <div class="chat-input-area">
+      <input id="userMessage" type="text" placeholder="Type your message here..." />
+      <button id="voiceInput" class="chat-btn"><i class='bx bx-microphone'></i></button>
+      <button id="sendMessage" class="chat-btn"><i class='bx bx-send'></i></button>
     </div>
   </div>
 </div>
+
 
     <!--Header site-->
     <header>
@@ -263,6 +263,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
