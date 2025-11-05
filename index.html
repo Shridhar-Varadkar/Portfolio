@@ -12,30 +12,20 @@
 <body>
 
 <!-- 🌐 Shrii Assistant Chatbot -->
-<div id="chatbot-container">
-  <button id="chatToggle" class="chat-toggle">
-    <i class='bx bx-message-dots'></i>
-  </button>
+<!-- Floating Chatbot Trigger -->
+<button id="chatToggle" class="chat-toggle-btn">💬</button>
 
-  <div id="chatbot" class="chatbot">
-    <div class="chat-header">
-      <i class='bx bx-bot'></i>
-      <span>Shrii Assistant</span>
-      <button id="closeChat" class="close-chat"><i class='bx bx-x'></i></button>
-    </div>
-    <div id="chatMessages" class="chat-messages">
-      <div class="message bot">
-        <div class="message-content">
-          <p>Hi there! 👋 I’m Shrii Assistant.<br>How can I help you today?</p>
-          <span class="timestamp">Just now</span>
-        </div>
-      </div>
-    </div>
-    <div class="chat-input-area">
-      <input id="userMessage" type="text" placeholder="Type your message here..." />
-      <button id="voiceInput" class="chat-btn"><i class='bx bx-microphone'></i></button>
-      <button id="sendMessage" class="chat-btn"><i class='bx bx-send'></i></button>
-    </div>
+<!-- Chatbot Box -->
+<div id="chatbot" class="chatbot">
+  <div class="chat-header">
+    <h3>Shrii Assistant</h3>
+    <button id="closeChat" class="close-chat">×</button>
+  </div>
+  <div id="chatMessages" class="chat-messages"></div>
+  <div class="chat-input-area">
+    <button id="voiceInput" class="voice-btn">🎤</button>
+    <input id="userMessage" type="text" placeholder="Type your message..." />
+    <button id="sendMessage" class="send-btn">Send</button>
   </div>
 </div>
 
@@ -263,6 +253,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
