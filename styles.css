@@ -1147,61 +1147,67 @@ footer a{
 }
 
 /* 🌐 Shrii Assistant Chatbot Styles */
-.chatbot-container {
+#chatbot-container {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  z-index: 9999;
-  font-family: 'Inter', sans-serif;
+  z-index: 2000;
 }
 
-.chatbot-toggle {
-  background: linear-gradient(145deg, #12f7ff, #007bff);
-  color: #fff;
+.chat-toggle {
+  background: var(--hover-color);
+  color: var(--bg--color);
   border: none;
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(18, 247, 255, 0.6);
-  transition: 0.3s;
+  box-shadow: 0 0 20px var(--hover-color);
+  transition: 0.3s ease;
 }
-
-.chatbot-toggle:hover {
+.chat-toggle:hover {
   transform: scale(1.1);
 }
 
-.chatbot-box {
+.chatbot {
   display: none;
   flex-direction: column;
   width: 340px;
-  height: 460px;
-  background: #101820;
-  color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(18, 247, 255, 0.5);
+  height: 480px;
+  background: var(--secon-bg-color);
+  border-radius: 15px;
   overflow: hidden;
-  animation: fadeInUp 0.3s ease;
+  box-shadow: 0 0 30px rgba(18,247,255,0.3);
+  border: 1px solid var(--hover-color);
+  animation: fadeIn 0.3s ease;
 }
 
-.chatbot-header {
-  background: rgba(18, 247, 255, 0.1);
-  padding: 15px;
+.chatbot.active {
+  display: flex;
+}
+
+.chat-header {
+  background: var(--hover-color);
+  color: var(--bg--color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(18, 247, 255, 0.4);
+  padding: 12px 16px;
+  font-weight: 600;
 }
 
-.chatbot-header h3 {
-  margin: 0;
-  color: #12f7ff;
+.close-chat {
+  background: transparent;
+  border: none;
+  color: var(--bg--color);
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.chatbot-messages {
+.chat-messages {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -1211,52 +1217,62 @@ footer a{
 .message {
   display: flex;
 }
-
 .message.bot .message-content {
-  background: rgba(18, 247, 255, 0.1);
-  color: #12f7ff;
+  background: #20242b;
+  color: #e3faff;
+  align-self: flex-start;
   border-radius: 10px 10px 10px 0;
 }
-
 .message.user .message-content {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: var(--hover-color);
+  color: var(--bg--color);
+  align-self: flex-end;
   border-radius: 10px 10px 0 10px;
-  margin-left: auto;
 }
-
 .message-content {
   padding: 10px 14px;
-  max-width: 80%;
+  max-width: 75%;
   line-height: 1.4;
+  box-shadow: 0 0 8px rgba(18,247,255,0.2);
+}
+.timestamp {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  color: #aaa;
 }
 
-.chatbot-input {
+.chat-input-area {
   display: flex;
-  border-top: 1px solid rgba(18, 247, 255, 0.4);
+  align-items: center;
+  padding: 10px;
+  background: var(--bg--color);
+  border-top: 1px solid #333;
 }
-
-.chatbot-input input {
+.chat-input-area input {
   flex: 1;
   background: transparent;
+  color: var(--text-color);
   border: none;
   outline: none;
-  padding: 12px;
-  color: #fff;
+  padding: 10px;
 }
-
-.chatbot-input button {
-  background: none;
+.chat-btn {
+  background: transparent;
   border: none;
-  color: #12f7ff;
-  font-size: 18px;
+  color: var(--hover-color);
+  font-size: 20px;
   cursor: pointer;
-  padding: 0 10px;
+  margin-left: 5px;
+}
+.chat-btn:hover {
+  color: #00eaff;
 }
 
-@keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
 }
+
 
 
