@@ -107,96 +107,78 @@ scrollTop.forEach((el) => observer.observe(el));
 
 
 // 🌐 Shrii Assistant Chatbot Logic
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("chatbotToggle");
-  const chatbotBox = document.querySelector(".chatbot-box");
-  const closeBtn = document.getElementById("closeChatbot");
-  const sendBtn = document.getElementById("chatbotSend");
-  const input = document.getElementById("chatbotInput");
-  const messages = document.getElementById("chatbotMessages");
-  const voiceBtn = document.getElementById("chatbotVoice");
+document.addEventListener('DOMContentLoaded', () => {
+  const chatToggle = document.getElementById('chatToggle');
+  const closeChat = document.getElementById('closeChat');
+  const chatbot = document.getElementById('chatbot');
+  const sendMessage = document.getElementById('sendMessage');
+  const userMessage = document.getElementById('userMessage');
+  const chatMessages = document.getElementById('chatMessages');
+  const voiceInput = document.getElementById('voiceInput');
 
-  toggleBtn.addEventListener("click", () => chatbotBox.style.display = "flex");
-  closeBtn.addEventListener("click", () => chatbotBox.style.display = "none");
+  // Toggle chatbot visibility
+  chatToggle.addEventListener('click', () => chatbot.classList.toggle('active'));
+  closeChat.addEventListener('click', () => chatbot.classList.remove('active'));
 
-  sendBtn.addEventListener("click", sendMessage);
-  input.addEventListener("keypress", e => e.key === "Enter" && sendMessage());
-
-  function sendMessage() {
-    const msg = input.value.trim();
-    if (!msg) return;
-    addMessage("user", msg);
-    input.value = "";
-    setTimeout(() => botReply(msg), 500);
-  }
-
+  // Add message to chat
   function addMessage(sender, text) {
-    const div = document.createElement("div");
-    div.className = `message ${sender}`;
-    div.innerHTML = `<div class="message-content">${text}</div>`;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
+    const msg = document.createElement('div');
+    msg.classList.add('message', sender);
+    msg.innerHTML = `<div class="message-content"><p>${text}</p><span class="timestamp">Just now</span></div>`;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    if (sender === 'bot') speakMessage(text);
   }
 
-  function botReply(userText) {
-    const text = userText.toLowerCase();
-    let reply = "";
+  // Send user message
+  sendMessage.addEventListener('click', () => handleMessage());
+  userMessage.addEventListener('keypress', e => { if (e.key === 'Enter') handleMessage(); });
 
-    if (text.includes("hello") || text.includes("hi")) reply = "Hello 👋, I'm Shrii Assistant. How can I help you today?";
-    else if (text.includes("resume")) reply = "You can view Shridhar’s resume <a href='Resume (2) (1).pdf' target='_blank'>here</a> 📄.";
-    else if (text.includes("call")) reply = "You can call Shridhar directly at <a href='tel:+919834504986'>+91 9834504986</a> 📞.";
-    else if (text.includes("schedule") || text.includes("interview")) {
-      reply = "Sure! Please provide your name, email, and preferred date/time — I’ll send a mail to schedule your interview.";
-      sendInterviewMailPrompt();
-    }
-    else if (text.includes("skill")) reply = "Shridhar is skilled in Java, Spring MVC, MySQL, JSP, HTML, CSS, JS, and Elasticsearch 💻.";
-    else reply = "I can help you with Shridhar’s profile, skills, projects, or schedule an interview 📅.";
-
-    addMessage("bot", reply);
-    speak(reply);
+  function handleMessage() {
+    const msg = userMessage.value.trim();
+    if (!msg) return;
+    addMessage('user', msg);
+    userMessage.value = '';
+    setTimeout(() => processMessage(msg.toLowerCase()), 600);
   }
 
-  // 🔊 Voice output (text-to-speech)
-  function speak(text) {
-    if ('speechSynthesis' in window) {
-      const msg = new SpeechSynthesisUtterance(text.replace(/<[^>]*>/g, ""));
-      msg.pitch = 1;
-      msg.rate = 1;
-      speechSynthesis.speak(msg);
-    }
+  // Process bot logic
+  function processMessage(msg) {
+    if (msg.includes('hello') || msg.includes('hi')) addMessage('bot', 'Hello! I’m Shrii Assistant 😊');
+    else if (msg.includes('resume')) addMessage('bot', 'Here’s my resume link: <a href="https://drive.google.com/file/d/1nOn2pn7YnNeUzzDeBj5sNmwBzy3VojBy/view?usp=drive_link" target="_blank">View Resume</a>');
+    else if (msg.includes('call')) addMessage('bot', 'You can reach Shridhar at 📞 +91 9834504986.');
+    else if (msg.includes('schedule')) addMessage('bot', 'Sure! I can schedule an interview for you. Please share your email.');
+    else if (msg.includes('thank')) addMessage('bot', 'You’re welcome! 😄');
+    else addMessage('bot', 'I can tell you about Shridhar’s skills, projects, or schedule an interview. What would you like to do?');
   }
 
-  // 🎙️ Voice input
-  if ('webkitSpeechRecognition' in window) {
-    const recognition = new webkitSpeechRecognition();
-    recognition.lang = 'en-US';
-    recognition.continuous = false;
-
-    voiceBtn.addEventListener("click", () => {
+  // Voice input
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+  if (recognition) {
+    voiceInput.addEventListener('click', () => {
       recognition.start();
+      voiceInput.classList.add('listening');
     });
-
-    recognition.onresult = (e) => {
-      input.value = e.results[0][0].transcript;
-      sendMessage();
+    recognition.onresult = e => {
+      userMessage.value = e.results[0][0].transcript;
+      voiceInput.classList.remove('listening');
     };
   }
 
-  // 📧 Send interview schedule email via backend
-  async function sendInterviewMailPrompt() {
-    // Example: this can be triggered after collecting user info
-    await fetch("/api/sendMail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: "Candidate",
-        email: "candidate@example.com",
-        subject: "Interview Request with Shridhar",
-        message: "A user has requested an interview via Shrii Assistant chatbot."
-      })
-    });
+  // Voice reply
+  function speakMessage(text) {
+    if ('speechSynthesis' in window) {
+      const speech = new SpeechSynthesisUtterance(text.replace(/<[^>]*>/g, ''));
+      speech.lang = 'en-US';
+      speech.rate = 1;
+      window.speechSynthesis.speak(speech);
+    }
   }
 });
+
+
 
     
 
