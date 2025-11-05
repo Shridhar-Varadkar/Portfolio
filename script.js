@@ -106,8 +106,9 @@ const scrollTop = document.querySelectorAll(".scroll-top");
 scrollTop.forEach((el) => observer.observe(el));
 
 
-// 🌐 Shrii Assistant Chatbot Logic
 // === SHRIDHAR VARADKAR CHATBOT LOGIC === //
+const chatbot = document.getElementById("chatbotBox"); // not "chatbot"
+
 document.addEventListener("DOMContentLoaded", function () {
   const chatToggle = document.getElementById("chatToggle");
   const closeChat = document.getElementById("closeChat");
