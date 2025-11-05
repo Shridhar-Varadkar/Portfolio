@@ -12,18 +12,20 @@
 <body>
 
 <!-- 🌐 Shrii Assistant Chatbot -->
-<div class="chatbot-container" id="chatbot">
 <div id="chatbot-container">
+  <!-- Floating toggle button -->
   <button id="chatToggle" class="chat-toggle">
     <i class='bx bx-message-dots'></i>
   </button>
 
-  <div id="chatbot" class="chatbot">
+  <!-- Chatbot box -->
+  <div id="chatbotBox" class="chatbot">
     <div class="chat-header">
       <i class='bx bx-bot'></i>
       <span>Shrii Assistant</span>
       <button id="closeChat" class="close-chat"><i class='bx bx-x'></i></button>
     </div>
+
     <div id="chatMessages" class="chat-messages">
       <div class="message bot">
         <div class="message-content">
@@ -32,6 +34,7 @@
         </div>
       </div>
     </div>
+
     <div class="chat-input-area">
       <input id="userMessage" type="text" placeholder="Type your message here..." />
       <button id="voiceInput" class="chat-btn"><i class='bx bx-microphone'></i></button>
@@ -39,8 +42,7 @@
     </div>
   </div>
 </div>
-</div>
-
+<!-- === END CHATBOT === -->
 
     <!--Header site-->
     <header>
@@ -265,6 +267,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
