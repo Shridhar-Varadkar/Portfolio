@@ -107,7 +107,6 @@ scrollTop.forEach((el) => observer.observe(el));
 
 
 // 🌐 Shrii Assistant Chatbot Logic
-<script>
 // ===== Shrii Assistant - Resume-aware chatbot with voice + scheduling =====
 
 // Resume details for smart replies
@@ -314,4 +313,4 @@ He has completed his <strong>BCA</strong> with a CGPA of 8.69 and is pursuing <s
 He’s passionate about learning and improving his skills through real-time projects.<br><br>
 Ask me about ${resumeData.name}’s <strong>skills</strong>, <strong>projects</strong>, <strong>education</strong>, or <strong>schedule an interview</strong>.
 `);
-</script>
+
