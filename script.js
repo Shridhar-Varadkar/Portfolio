@@ -105,35 +105,28 @@ scrollBottom.forEach((el) => observer.observe(el));
 const scrollTop = document.querySelectorAll(".scroll-top");
 scrollTop.forEach((el) => observer.observe(el));
 
-
-// === SHRIDHAR VARADKAR CHATBOT LOGIC === //
+// === SHRIDHAR VARADKAR CHATBOT LOGIC — FINAL HUMAN VERSION === //
 document.addEventListener("DOMContentLoaded", function () {
   const chatToggle = document.getElementById("chatToggle");
   const closeChat = document.getElementById("closeChat");
-  const chatbot = document.getElementById("chatbotBox"); 
+  const chatbot = document.getElementById("chatbot");
   const sendMessage = document.getElementById("sendMessage");
   const userMessage = document.getElementById("userMessage");
   const chatMessages = document.getElementById("chatMessages");
   const voiceButton = document.getElementById("voiceInput");
 
-  // Resume Knowledge Data (Shrii Assistant)
+  // Resume info (knowledge base)
   const resumeData = {
     name: "Shridhar Varadkar",
     role: "Java Developer",
     company: "Velox Solutions",
-    education: "BCA with CGPA 8.69 and pursuing MCA from Bharati Vidyapeeth.",
+    education: "BCA with CGPA 8.69 and currently pursuing MCA from Bharati Vidyapeeth.",
     summary:
-      "Shridhar Varadkar is currently working as a Java Developer at Velox Solutions, focusing on backend development using Java, Spring MVC, MySQL, and front-end technologies like HTML, CSS, and JavaScript. He has worked on projects such as a Security Information and Event Management (SIEM) system and a Booth Management mobile app. He has completed Full Stack Development training and holds certifications in Java, MySQL, and AWS.",
+      "Shridhar Varadkar is a dedicated Java Developer at Velox Solutions. He focuses on backend development using Java, Spring MVC, and MySQL, along with frontend technologies like HTML, CSS, and JavaScript. He’s worked on major projects like a Security Information and Event Management (SIEM) system and a Booth Management mobile app. He’s certified in Java, MySQL, AWS, and Full Stack Web Development.",
     skills: [
-      "Java",
-      "Spring MVC",
-      "Hibernate",
-      "MySQL",
-      "JSP & Servlets",
-      "HTML, CSS, JavaScript",
-      "Bootstrap",
-      "Elasticsearch",
-      "Git, Postman, STS, NetBeans, Tomcat"
+      "Java", "Spring MVC", "Hibernate", "MySQL", "JSP & Servlets",
+      "HTML", "CSS", "JavaScript", "Bootstrap", "Elasticsearch",
+      "Git", "Postman", "STS", "NetBeans", "Tomcat"
     ],
     projects: [
       "Security Information and Event Management (SIEM)",
@@ -142,10 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "E-Learning Management System"
     ],
     certifications: [
-      "IBM Java Certification",
-      "AWS Certification",
-      "MySQL Certification",
-      "Full Stack Java Development - ITVedant"
+      "IBM Java Certification", "AWS Certification",
+      "MySQL Certification", "Full Stack Java Development - ITVedant"
     ],
     contact: {
       email: "hemantvaradkar2000@gmail.com",
@@ -153,11 +144,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Toggle Chatbot
-  chatToggle?.addEventListener("click", () => chatbot.classList.toggle("active"));
+  // === CHAT WINDOW TOGGLE ===
+  chatToggle?.addEventListener("click", () => {
+    chatbot.classList.toggle("active");
+    if (chatbot.classList.contains("active")) {
+      speakBotMessage("Hey there! I’m Shrii Assistant, your virtual buddy. How can I help you today?");
+    }
+  });
   closeChat?.addEventListener("click", () => chatbot.classList.remove("active"));
 
-  // Send user message
+  // === SEND MESSAGE ===
   sendMessage?.addEventListener("click", sendUserMessage);
   userMessage?.addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendUserMessage();
@@ -168,74 +164,82 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!message) return;
     addMessage("user", message);
     userMessage.value = "";
-    setTimeout(() => processMessage(message), 500);
+    setTimeout(() => processMessage(message), 600);
   }
 
-  // Add message to chat window
+  // === ADD MESSAGE TO CHAT ===
   function addMessage(sender, text) {
     const msgDiv = document.createElement("div");
     msgDiv.className = `message ${sender}`;
-    msgDiv.innerHTML = `<div class="message-content"><p>${text}</p><span class="timestamp">Just now</span></div>`;
+    msgDiv.innerHTML = `
+      <div class="message-content">
+        <p>${text}</p>
+        <span class="timestamp">Just now</span>
+      </div>`;
     chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     if (sender === "bot") speakBotMessage(text);
   }
 
-  // Process user input
-  function processMessage(msg) {
-    const message = msg.toLowerCase();
+  // === CORE INTELLIGENCE ===
+  function processMessage(rawMsg) {
+    const msg = rawMsg.toLowerCase();
     let reply = "";
 
-    // Greetings
-    if (message.includes("hi") || message.includes("hello")) {
-      reply = `Hello! I'm Shrii Assistant — I can tell you about ${resumeData.name}, his skills, experience, and projects.`;
+    // Handle question words (who, what, why, when, where, how)
+    if (msg.includes("who")) {
+      reply = `Shridhar Varadkar is a passionate Java Developer working at Velox Solutions, known for his backend expertise and innovative project work.`;
+    } else if (msg.includes("what")) {
+      if (msg.includes("skill")) {
+        reply = `Shridhar’s top skills include ${resumeData.skills.join(", ")} — he’s especially strong in Java and Spring MVC.`;
+      } else if (msg.includes("project")) {
+        reply = `He has worked on major projects like ${resumeData.projects.join(", ")}.`;
+      } else {
+        reply = `That’s a nice question! Shridhar mainly focuses on software development and backend logic using Java and Spring.`;
+      }
+    } else if (msg.includes("why")) {
+      reply = `Shridhar chose Java because he enjoys solving real-world problems with clean, structured code. He loves backend engineering where logic meets creativity.`;
+    } else if (msg.includes("when")) {
+      reply = `Shridhar started his professional journey around two years ago and is currently gaining solid experience at Velox Solutions.`;
+    } else if (msg.includes("where")) {
+      reply = `Shridhar is based in Mumbai, India, and is pursuing his MCA from Bharati Vidyapeeth.`;
+    } else if (msg.includes("how")) {
+      reply = `He keeps improving his skills by working on real-time projects, contributing to systems like SIEM, and exploring AI tools and modern Java frameworks.`;
     }
-    // About
-    else if (message.includes("who") || message.includes("yourself")) {
-      reply = resumeData.summary;
-    }
-    // Experience
-    else if (message.includes("experience")) {
-      reply = `${resumeData.name} is working as a ${resumeData.role} at ${resumeData.company}, mainly focusing on Java backend development and system integration.`;
-    }
-    // Projects
-    else if (message.includes("project")) {
-      reply = `${resumeData.name} has contributed to projects like ${resumeData.projects.join(", ")}.`;
-    }
-    // Skills
-    else if (message.includes("skill")) {
-      reply = `${resumeData.name}'s technical skills include ${resumeData.skills.join(", ")}.`;
+    // Normal greetings
+    else if (msg.includes("hi") || msg.includes("hello") || msg.includes("hey")) {
+      reply = `Hey there! 😊 I’m Shrii Assistant — I can tell you about Shridhar’s experience, skills, and projects.`;
     }
     // Education
-    else if (message.includes("education") || message.includes("study")) {
+    else if (msg.includes("study") || msg.includes("education")) {
       reply = `${resumeData.name} completed ${resumeData.education}`;
     }
     // Certifications
-    else if (message.includes("certification") || message.includes("course")) {
+    else if (msg.includes("certification") || msg.includes("course")) {
       reply = `${resumeData.name} holds certifications in ${resumeData.certifications.join(", ")}.`;
     }
-    // Contact info
-    else if (message.includes("contact") || message.includes("email") || message.includes("call")) {
+    // Contact
+    else if (msg.includes("contact") || msg.includes("email") || msg.includes("call")) {
       reply = `You can contact ${resumeData.name} at ${resumeData.contact.email}.`;
     }
-    // Schedule interview
-    else if (message.includes("schedule") || message.includes("interview")) {
+    // Schedule
+    else if (msg.includes("schedule") || msg.includes("interview")) {
       startSchedulingFlow();
       return;
     }
     // Thanks
-    else if (message.includes("thank")) {
-      reply = `You're most welcome! 😊`;
+    else if (msg.includes("thank")) {
+      reply = `You’re most welcome! It’s always great chatting with you. 😊`;
     }
-    // Default
+    // Fallback
     else {
-      reply = `I'm here to assist you with information about ${resumeData.name}. You can ask about his projects, skills, education, or work experience.`;
+      reply = `Hmm, that’s interesting! You can ask me about Shridhar’s projects, skills, certifications, or even schedule an interview with him.`;
     }
 
     addMessage("bot", reply);
   }
 
-  // Voice input
+  // === VOICE INPUT ===
   const speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   let recognition;
   if (speechRecognition) {
@@ -249,26 +253,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   voiceButton?.addEventListener("click", () => recognition?.start());
 
-  // Female voice output
+  // === FEMALE VOICE OUTPUT ===
   function speakBotMessage(text) {
     if (!("speechSynthesis" in window)) return;
     const speech = new SpeechSynthesisUtterance(text);
-    speech.rate = 1;
-    speech.pitch = 1;
-    speech.volume = 1;
+    speech.rate = 1.0;
+    speech.pitch = 1.0;
     const voices = speechSynthesis.getVoices();
-    speech.voice = voices.find(v => v.name.toLowerCase().includes("female") || v.name.toLowerCase().includes("zira")) || voices[0];
+    speech.voice =
+      voices.find(v =>
+        v.name.toLowerCase().includes("female") ||
+        v.name.toLowerCase().includes("zira") ||
+        v.name.toLowerCase().includes("susan") ||
+        v.name.toLowerCase().includes("english")) || voices[0];
     window.speechSynthesis.speak(speech);
   }
 
-  // Scheduling Flow
+  // === SCHEDULING FLOW ===
   let schedulingStep = 0;
   let schedulingData = {};
 
   function startSchedulingFlow() {
     schedulingStep = 1;
     schedulingData = {};
-    addMessage("bot", "Sure! Let's schedule your interview. May I know your full name?");
+    addMessage("bot", "Awesome! Let's set up your interview. Can you tell me your full name?");
   }
 
   function handleSchedulingResponse(message) {
@@ -276,23 +284,23 @@ document.addEventListener("DOMContentLoaded", function () {
       case 1:
         schedulingData.name = message;
         schedulingStep++;
-        addMessage("bot", "Please share your email address.");
+        addMessage("bot", "Great! Please share your email address so Shridhar can reach you.");
         break;
       case 2:
         schedulingData.email = message;
         schedulingStep++;
-        addMessage("bot", "What date would you prefer for the interview? (DD/MM/YYYY)");
+        addMessage("bot", "Perfect. What date suits you best? (DD/MM/YYYY)");
         break;
       case 3:
         schedulingData.date = message;
         schedulingStep++;
-        addMessage("bot", "At what time would you like to schedule it?");
+        addMessage("bot", "Got it! What time works best for you?");
         break;
       case 4:
         schedulingData.time = message;
-        schedulingStep++;
+        schedulingStep = 0;
         sendScheduleMail();
-        addMessage("bot", "Your interview request has been noted! You'll receive a confirmation via email shortly.");
+        addMessage("bot", "All set! Shridhar will confirm your interview soon via email. 😊");
         break;
     }
   }
@@ -302,6 +310,6 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(schedulingData)
-    }).catch((err) => console.error("Error sending schedule:", err));
+    }).catch((err) => console.error("Mail send error:", err));
   }
 });
