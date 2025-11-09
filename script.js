@@ -14,9 +14,11 @@ words.forEach((word) => {
 });
 let currentWordIndex = 0;
 let maxWordIndex = words.length - 1;
-words[currentWordIndex].style.opacity = "1";
+if (words[0]) words[0].style.opacity = "1";
 
 let changeText = () => {
+    if (words.length === 0) return;
+
     let currentWord = words[currentWordIndex];
     let nextWord = currentWordIndex === maxWordIndex ? words[0] : words[currentWordIndex + 1];
 
@@ -37,7 +39,6 @@ let changeText = () => {
 
     currentWordIndex = currentWordIndex === maxWordIndex ? 0 : currentWordIndex + 1;
 };
-
 changeText();
 setInterval(changeText, 3000);
 
@@ -129,42 +130,45 @@ document.querySelectorAll(".scroll-top").forEach(el => observer.observe(el));
 
 
 /*******************************************
-   ⭐ SHRI ASSISTANT — FULL CHATBOT LOGIC
+   SHRI ASSISTANT — FULL CHATBOT LOGIC
 *******************************************/
 document.addEventListener("DOMContentLoaded", function () {
 
     const chatToggle = document.getElementById("chatToggle");
     const closeChat = document.getElementById("closeChat");
-    const chatbot = document.getElementById("chatbot");
+    const chatbot = document.getElementById("chatbotBox");
     const sendMessage = document.getElementById("sendMessage");
     const userMessage = document.getElementById("userMessage");
     const chatMessages = document.getElementById("chatMessages");
     const voiceButton = document.getElementById("voiceInput");
 
     /***************************************
-       KNOWLEDGE BASE
+       KNOWLEDGE BASE (Resume Data)
     ****************************************/
     const resumeData = {
         name: "Shridhar Varadkar",
+        experience: "2 years of experience as a Java Developer",
         role: "Java Developer",
-        company: "Velox Solutions",
-        education: "BCA with CGPA 8.69 and currently pursuing MCA from Bharati Vidyapeeth.",
+        company: "Velox Solutions, Mumbai",
+        education: "BCA with 8.69 CGPA, currently pursuing MCA from Bharati Vidyapeeth",
         summary:
-            "Shridhar Varadkar is a dedicated Java Developer at Velox Solutions. He focuses on backend development using Java, Spring MVC, and MySQL, along with frontend technologies like HTML, CSS, and JavaScript.",
+            "Shridhar Varadkar is a dedicated Java Developer who works on backend development using Java, Spring MVC, MySQL, and frontend technologies like HTML, CSS, JavaScript.",
         skills: [
             "Java", "Spring MVC", "Hibernate", "MySQL", "JSP & Servlets",
             "HTML", "CSS", "JavaScript", "Bootstrap", "Elasticsearch",
             "Git", "Postman", "STS", "NetBeans", "Tomcat"
         ],
         projects: [
-            "Security Information and Event Management (SIEM)",
-            "Security Orchestration Automation and Response (SOAR)",
+            "SIEM - Security Information and Event Management",
+            "SOAR - Security Automation Response",
             "Booth Management System (Mobile App)",
             "E-Learning Management System"
         ],
         certifications: [
-            "IBM Java Certification", "AWS Certification",
-            "MySQL Certification", "Full Stack Java Development - ITVedant"
+            "IBM Java Certification",
+            "AWS Certification",
+            "MySQL Certification",
+            "Full Stack Development - ITVedant"
         ],
         contact: {
             email: "hemantvaradkar2000@gmail.com",
@@ -174,13 +178,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /***************************************
-       CHAT BOX TOGGLE
+       OPEN/CLOSE CHAT
     ****************************************/
     chatToggle?.addEventListener("click", () => {
         chatbot.classList.toggle("active");
 
         if (chatbot.classList.contains("active")) {
-            speakBotMessage("Hey there! I’m Shrii Assistant, your virtual buddy. How can I help you today?");
+            speakBotMessage("Hi, I'm Shrii Assistant! How can I help you today?");
         }
     });
 
@@ -188,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /***************************************
-       SENDING USER MESSAGE
+       SEND USER MESSAGE
     ****************************************/
     sendMessage?.addEventListener("click", sendUserMessage);
 
@@ -203,12 +207,18 @@ document.addEventListener("DOMContentLoaded", function () {
         addMessage("user", message);
         userMessage.value = "";
 
-        setTimeout(() => processMessage(message), 600);
+        // If in scheduling mode
+        if (schedulingStep > 0) {
+            handleSchedulingResponse(message);
+            return;
+        }
+
+        setTimeout(() => processMessage(message), 500);
     }
 
 
     /***************************************
-       ADD MESSAGE TO UI
+       PRINT MESSAGE IN CHAT
     ****************************************/
     function addMessage(sender, text) {
         const msgDiv = document.createElement("div");
@@ -227,169 +237,128 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /***************************************
-       INTELLIGENCE + QUESTION ANSWERING
+       CHATBOT INTELLIGENCE
     ****************************************/
     let schedulingStep = 0;
     let schedulingData = {};
 
-   function processMessage(rawMsg) {
-    const msg = rawMsg.toLowerCase().trim();
-    let reply = "";
-
-    function includesAny(list) {
+    function includesAny(msg, list) {
         return list.some(q => msg.includes(q));
     }
 
-    const askAbout = ["tell me about", "who is shridhar", "about shridhar", "about him", "explain about", "who is he"];
-    const askSummary = ["summary", "overall", "brief", "full details", "full info", "full profile"];
-    const askExperience = ["experience", "work experience", "years", "how many years", "working since", "career"];
-    const askEducation = ["education", "study", "qualification", "degree", "college"];
-    const askSkills = ["skills", "tech stack", "what he knows", "technical", "programming"];
-    const askProjects = ["project", "projects he did", "work done", "portfolio projects"];
-    const askCertifications = ["certification", "courses", "completed course", "extra qualification"];
-    const askContact = ["contact", "email", "call", "phone"];
-    const askStrengths = ["strength", "strong point", "why hire", "best thing"];
-    const askWeakness = ["weakness", "weak point", "improve"];
-    const askPersonality = ["personality", "behavior", "how is he", "how is shridhar"];
-    const askFuture = ["future", "goal", "aim", "dream", "career goal"];
-    const askWorkStyle = ["work style", "work approach", "team", "communication"];
-    const askTechExplain = ["explain spring", "explain java", "spring mvc explain", "backend explain"];
+    function processMessage(rawMsg) {
+        const msg = rawMsg.toLowerCase().trim();
+        let reply = "";
 
-    // 1. Full profile summary
-    if (includesAny(askAbout) || includesAny(askSummary)) {
-        reply =
-        "Here is a complete summary about Shridhar Varadkar:\n\n" +
-        "• A passionate Java Developer with 2 years of professional experience.\n" +
-        "• Currently working at Velox Solutions.\n" +
-        "• Skilled in Java, Spring MVC, MySQL, JSP, Servlets, HTML, CSS, JavaScript and Elasticsearch.\n" +
-        "• Worked on SIEM, SOAR, Booth Management App and E-Learning System.\n" +
-        "• Completed BCA with 8.69 CGPA and pursuing MCA.\n" +
-        "• Certified in Java, MySQL, AWS and Full Stack Development.\n\n" +
-        "Ask me if you want more information on skills, projects, or experience.";
-        return addMessage("bot", reply);
+        const about = ["tell me about", "who is shridhar", "about shridhar", "about him", "explain about"];
+        const summary = ["summary", "full info", "profile", "details"];
+        const exp = ["experience", "how many years", "year", "work experience"];
+        const education = ["education", "study", "qualification", "degree", "college"];
+        const skills = ["skills", "tech stack", "what he knows", "what skills"];
+        const projects = ["project", "projects", "work done"];
+        const certs = ["certification", "course", "completed course"];
+        const contact = ["contact", "email", "call", "phone"];
+        const personality = ["personality", "behavior", "how is he"];
+        const strength = ["strength", "strong point", "why hire"];
+        const weakness = ["weakness", "improve"];
+        const goals = ["future", "goal", "aim", "career goal"];
+        const workflow = ["work style", "team", "communication"];
+        const greet = ["hi", "hello", "hey"];
+
+        if (includesAny(msg, about) || includesAny(msg, summary)) {
+            reply =
+                "Here is a quick summary of Shridhar Varadkar:\n" +
+                "• Java Developer with 2 years experience.\n" +
+                "• Works at Velox Solutions.\n" +
+                "• Strong in backend development using Java, Spring MVC, MySQL.\n" +
+                "• Worked on SIEM, SOAR, Booth App, E-Learning.\n" +
+                "• Pursuing MCA from Bharati Vidyapeeth.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, exp)) {
+            reply = "Shridhar has 2 years of professional experience as a Java Developer at Velox Solutions.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, education)) {
+            reply = "Shridhar completed BCA with 8.69 CGPA and is currently pursuing MCA from Bharati Vidyapeeth.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, skills)) {
+            reply = 
+            "Shridhar's skills include Java, Spring MVC, Hibernate, MySQL, JSP, Servlets, HTML, CSS, JavaScript, Bootstrap, Elasticsearch.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, projects)) {
+            reply = 
+            "Shridhar has worked on:\n" +
+            "• SIEM (Security Information Management)\n" +
+            "• SOAR (Security Automation)\n" +
+            "• Booth Management App\n" +
+            "• E-Learning Management System";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, certs)) {
+            reply = "Shridhar holds certifications in Java, AWS, MySQL and Full Stack Development.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, personality)) {
+            reply = "Shridhar is calm, friendly, hardworking and always eager to learn.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, strength)) {
+            reply = "Shridhar's strengths include problem solving, backend logic, teamwork, and clean coding.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, weakness)) {
+            reply = "Shridhar is working on improving system design and advanced architecture skills.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, goals)) {
+            reply = "Shridhar aims to become a strong backend engineer and later a full-stack architect.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, workflow)) {
+            reply = "Shridhar works in a structured way, communicates well, and enjoys teamwork.";
+            return addMessage("bot", reply);
+        }
+
+        if (includesAny(msg, contact)) {
+            reply = "You can contact Shridhar at: " + resumeData.contact.email;
+            return addMessage("bot", reply);
+        }
+
+        if (msg.includes("schedule") || msg.includes("interview")) {
+            startSchedulingFlow();
+            return;
+        }
+
+        if (includesAny(msg, greet)) {
+            reply = "Hello! I'm Shrii Assistant 😊 How can I help you?";
+            return addMessage("bot", reply);
+        }
+
+        if (msg.includes("thank")) {
+            reply = "You’re welcome! Always happy to help.";
+            return addMessage("bot", reply);
+        }
+
+        reply = "I can tell you about Shridhar's skills, projects, experience, education or schedule an interview. Ask me anything!";
+        addMessage("bot", reply);
     }
 
-    // 2. Experience
-    if (includesAny(askExperience)) {
-        reply =
-        "Shridhar has 2 years of solid professional experience as a Java Developer.\n" +
-        "He works at Velox Solutions focusing on backend development, API building, and security systems.";
-        return addMessage("bot", reply);
-    }
-
-    // 3. Education
-    if (includesAny(askEducation)) {
-        reply =
-        "Shridhar completed BCA with 8.69 CGPA and he is currently pursuing MCA from Bharati Vidyapeeth.";
-        return addMessage("bot", reply);
-    }
-
-    // 4. Skills
-    if (includesAny(askSkills))) {
-        reply =
-        "Shridhar's main skills are:\n" +
-        "Java, Spring MVC, Hibernate, MySQL, JSP, Servlets, HTML, CSS, JavaScript, Bootstrap and Elasticsearch.\n" +
-        "He is strong in backend and full-stack development.";
-        return addMessage("bot", reply);
-    }
-
-    // 5. Projects
-    if (includesAny(askProjects)) {
-        reply =
-        "Shridhar has worked on these major projects:\n" +
-        "1. SIEM - Security Information and Event Management\n" +
-        "2. SOAR - Security Automation Response\n" +
-        "3. Booth Management App\n" +
-        "4. E-Learning Management System\n\n" +
-        "Ask me if you want details about any specific project.";
-        return addMessage("bot", reply);
-    }
-
-    // 6. Certifications
-    if (includesAny(askCertifications)) {
-        reply =
-        "Shridhar is certified in Java, AWS, MySQL and Full Stack Development.";
-        return addMessage("bot", reply);
-    }
-
-    // 7. Strengths
-    if (includesAny(askStrengths)) {
-        reply =
-        "Shridhar's strengths are problem solving, backend development, quick learning, clean coding and teamwork.";
-        return addMessage("bot", reply);
-    }
-
-    // 8. Weakness
-    if (includesAny(askWeakness)) {
-        reply =
-        "Shridhar is improving his knowledge in advanced system design and large-scale architecture.";
-        return addMessage("bot", reply);
-    }
-
-    // 9. Personality
-    if (includesAny(askPersonality)) {
-        reply =
-        "Shridhar is friendly, calm, focused and hardworking. He communicates well and enjoys helping others.";
-        return addMessage("bot", reply);
-    }
-
-    // 10. Future goals
-    if (includesAny(askFuture)) {
-        reply =
-        "Shridhar aims to become a strong backend engineer and later a full stack architect. He wants to master Spring Boot, Microservices and Cloud.";
-        return addMessage("bot", reply);
-    }
-
-    // 11. Work style
-    if (includesAny(askWorkStyle)) {
-        reply =
-        "Shridhar follows a structured and clean coding approach. He likes planning tasks, working in teams and communicating clearly.";
-        return addMessage("bot", reply);
-    }
-
-    // 12. Technical explanations
-    if (includesAny(askTechExplain)) {
-        reply =
-        "Sure. Here is a simple explanation:\n\n" +
-        "Spring MVC is a framework used to build web applications using the Model View Controller pattern.\n" +
-        "Java is an object-oriented programming language widely used for backend systems.\n\n" +
-        "If you want, I can explain any technology in detail.";
-        return addMessage("bot", reply);
-    }
-
-    // 13. Contact
-    if (includesAny(askContact)) {
-        reply = 
-        "You can contact Shridhar at: " + resumeData.contact.email;
-        return addMessage("bot", reply);
-    }
-
-    // 14. Scheduling
-    if (msg.includes("schedule") || msg.includes("interview")) {
-        startSchedulingFlow();
-        return;
-    }
-
-    // 15. Greeting
-    if (msg.includes("hi") || msg.includes("hello") || msg.includes("hey")) {
-        reply = "Hello! I am Shrii Assistant. How can I help you today?";
-        return addMessage("bot", reply);
-    }
-
-    // 16. Thanks
-    if (msg.includes("thank")) {
-        reply = "You're welcome! Happy to help.";
-        return addMessage("bot", reply);
-    }
-
-    // 17. Fallback
-    reply =
-    "I can help you with Shridhar's skills, projects, experience, education or interview scheduling. Ask me anything!";
-    addMessage("bot", reply);
-}
 
     /***************************************
-       SCHEDULING INTERVIEW FLOW
+       INTERVIEW SCHEDULING FLOW
     ****************************************/
     function startSchedulingFlow() {
         schedulingStep = 1;
@@ -402,26 +371,26 @@ document.addEventListener("DOMContentLoaded", function () {
             case 1:
                 schedulingData.name = message;
                 schedulingStep++;
-                addMessage("bot", "Nice! Please share your email address.");
+                addMessage("bot", "Please share your email address.");
                 break;
 
             case 2:
                 schedulingData.email = message;
                 schedulingStep++;
-                addMessage("bot", "Perfect! What date suits you? (DD/MM/YYYY)");
+                addMessage("bot", "What date suits you best? (DD/MM/YYYY)");
                 break;
 
             case 3:
                 schedulingData.date = message;
                 schedulingStep++;
-                addMessage("bot", "What time would you prefer?");
+                addMessage("bot", "What time is comfortable for you?");
                 break;
 
             case 4:
                 schedulingData.time = message;
                 schedulingStep = 0;
                 sendScheduleMail();
-                addMessage("bot", "All set! Shridhar will confirm soon 😊");
+                addMessage("bot", "All done! Shridhar will confirm your interview soon.");
                 break;
         }
     }
@@ -431,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(schedulingData)
-        }).catch((err) => console.error("Mail send error:", err));
+        });
     }
 
 
