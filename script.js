@@ -130,7 +130,7 @@ document.querySelectorAll(".scroll-top").forEach(el => observer.observe(el));
 
 
 /*******************************************
-   SHRI ASSISTANT — FULL INTELLIGENT JINN AI
+   SHRI ASSISTANT — FULL CHATBOT LOGIC (UPGRADED)
 *******************************************/
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -149,19 +149,19 @@ document.addEventListener("DOMContentLoaded", function () {
         name: "Shridhar Varadkar",
         experience: "2 years of experience as a Java Developer",
         role: "Java Developer",
-        company: "Velox Solutions",
-        education: "BCA (8.69 CGPA) + MCA (Pursuing)",
+        company: "Velox Solutions, Mumbai",
+        education: "BCA with 8.69 CGPA, currently pursuing MCA from Bharati Vidyapeeth",
         summary:
-            "Shridhar is a dedicated Java Developer who works on backend development using Java, Spring MVC, MySQL, and frontend technologies like HTML, CSS, JavaScript.",
+            "Shridhar Varadkar is a dedicated Java Developer skilled in Java, Spring MVC, MySQL, and frontend technologies like HTML, CSS, JavaScript.",
         skills: [
-            "Java", "Spring MVC", "Hibernate", "MySQL", "JSP & Servlets",
+            "Java", "Spring MVC", "Hibernate", "MySQL", "JSP", "Servlets",
             "HTML", "CSS", "JavaScript", "Bootstrap", "Elasticsearch",
-            "Git", "Postman", "STS", "Tomcat"
+            "Git", "Postman", "STS", "NetBeans", "Tomcat"
         ],
         projects: [
-            "SIEM (Security Information & Event Management)",
-            "SOAR (Security Automation & Response)",
-            "Booth Management App",
+            "SIEM (Security Information and Event Management)",
+            "SOAR (Security Automation Response)",
+            "Booth Management System (Mobile App)",
             "E-Learning Management System"
         ],
         certifications: [
@@ -170,44 +170,10 @@ document.addEventListener("DOMContentLoaded", function () {
             "MySQL Certification",
             "Full Stack Development - ITVedant"
         ],
-        personality:
-            "Shridhar is calm, friendly, hardworking, disciplined and focused on learning new things.",
-        strengths:
-            "Problem solving, strong backend logic, teamwork, fast learning, clean coding.",
-        weakness:
-            "Working on improving system design & advanced architecture.",
-        goals:
-            "Wants to become a senior backend engineer and later a full-stack architect.",
         contact: {
             email: "hemantvaradkar2000@gmail.com",
-            phone: "Your Contact Number Here"
         }
     };
-
-    /***************************************
-       SMART AUTO-CORRECTION ENGINE
-    ****************************************/
-    function correctSpellings(msg) {
-        const corrections = {
-            "shidar": "shridhar",
-            "shidarh": "shridhar",
-            "expriance": "experience",
-            "eduction": "education",
-            "skils": "skills",
-            "projets": "projects",
-            "ceritification": "certification",
-            "interviw": "interview",
-            "schedul": "schedule",
-        };
-
-        let words = msg.split(" ");
-
-        words = words.map(w =>
-            corrections[w] ? corrections[w] : w
-        );
-
-        return words.join(" ");
-    }
 
     /***************************************
        OPEN/CLOSE CHAT
@@ -216,14 +182,15 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbot.classList.toggle("active");
 
         if (chatbot.classList.contains("active")) {
-            speakBotMessage("Hi! I'm Jinn, Shrii’s friendly AI assistant. How can I help you today?");
+            speakBotMessage("Hi! I'm Jinn, Shrii’s friendly assistant. How can I help you today?");
         }
     });
 
     closeChat?.addEventListener("click", () => chatbot.classList.remove("active"));
 
+
     /***************************************
-       SEND USER MESSAGE
+       SENDING USER MESSAGE
     ****************************************/
     sendMessage?.addEventListener("click", sendUserMessage);
 
@@ -232,16 +199,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function sendUserMessage() {
-        let message = userMessage.value.trim();
+        const message = userMessage.value.trim();
         if (!message) return;
-
-        // Correct spelling mistakes
-        const corrected = correctSpellings(message.toLowerCase());
-        message = corrected;
 
         addMessage("user", message);
         userMessage.value = "";
 
+        // If in scheduling mode
         if (schedulingStep > 0) {
             handleSchedulingResponse(message);
             return;
@@ -250,17 +214,18 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => processMessage(message), 500);
     }
 
+
     /***************************************
-       PRINT MESSAGE IN CHAT
+       PRINT MESSAGE IN CHAT BOX
     ****************************************/
     function addMessage(sender, text) {
         const msgDiv = document.createElement("div");
         msgDiv.className = `message ${sender}`;
         msgDiv.innerHTML = `
-          <div class="message-content">
-            <p>${text}</p>
-            <span class="timestamp">Just now</span>
-          </div>`;
+            <div class="message-content">
+                <p>${text}</p>
+                <span class="timestamp">Just now</span>
+            </div>`;
 
         chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -268,9 +233,64 @@ document.addEventListener("DOMContentLoaded", function () {
         if (sender === "bot") speakBotMessage(text);
     }
 
-    /***************************************
-       MAIN AI LOGIC — JINN'S BRAIN
-    ****************************************/
+
+    /*******************************************
+     SPELL CORRECTION + SMART MATCH ENGINE
+    *******************************************/
+    const dictionary = [
+        "skill", "skills", "experience", "education", "project", "projects",
+        "shridhar", "developer", "java", "spring", "mvc", "work", "college",
+        "degree", "summary", "certifications", "interview", "schedule"
+    ];
+
+    function autoCorrect(word) {
+        let bestMatch = word;
+        let bestScore = Infinity;
+
+        dictionary.forEach(dictWord => {
+            const dist = levenshtein(word.toLowerCase(), dictWord.toLowerCase());
+            if (dist < bestScore && dist <= 2) {  
+                bestScore = dist;
+                bestMatch = dictWord;
+            }
+        });
+
+        return bestMatch;
+    }
+
+    function correctMessage(message) {
+        return message
+            .split(" ")
+            .map(w => autoCorrect(w))
+            .join(" ");
+    }
+
+    // Levenshtein Distance Function
+    function levenshtein(a, b) {
+        const matrix = Array(b.length + 1).fill(null).map(() =>
+            Array(a.length + 1).fill(null)
+        );
+
+        for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+        for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+
+        for (let j = 1; j <= b.length; j++) {
+            for (let i = 1; i <= a.length; i++) {
+                const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                matrix[j][i] = Math.min(
+                    matrix[j][i - 1] + 1,
+                    matrix[j - 1][i] + 1,
+                    matrix[j - 1][i - 1] + cost
+                );
+            }
+        }
+        return matrix[b.length][a.length];
+    }
+
+
+    /*******************************************
+       CHATBOT — BRAIN / INTELLIGENCE
+    *******************************************/
     let schedulingStep = 0;
     let schedulingData = {};
 
@@ -279,106 +299,129 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function processMessage(rawMsg) {
-        const msg = rawMsg.toLowerCase().trim();
+        const corrected = correctMessage(rawMsg);
+        const msg = corrected.toLowerCase().trim();
         let reply = "";
 
-        const about = ["tell me about", "who is", "about shridhar"];
-        const exp = ["experience", "how many years"];
-        const edu = ["education", "study", "qualification"];
+        const about = ["tell me about", "who is shridhar", "about shridhar", "explain"];
+        const exp = ["experience", "year", "work experience"];
+        const education = ["education", "qualification", "degree"];
         const skills = ["skills", "tech stack"];
-        const projects = ["projects", "work done"];
-        const certs = ["certification", "courses"];
+        const projects = ["project", "projects"];
+        const certs = ["certification", "course"];
         const personality = ["personality", "behavior"];
         const strength = ["strength", "strong point"];
-        const weakness = ["weakness"];
-        const goals = ["goal", "future", "aim"];
-        const contact = ["email", "contact", "phone"];
+        const weakness = ["weakness", "improve"];
+        const goals = ["goal", "future"];
         const greet = ["hi", "hello", "hey"];
-        const jokes = ["joke", "fun", "laugh"];
-        const motivate = ["motivate", "motivation", "inspire"];
-
+        const contact = ["contact", "email", "phone"];
+        
+        /********** Resume Q/A **********/
         if (includesAny(msg, about)) {
-            reply = `Here’s a quick intro about Shridhar:\n${resumeData.summary}`;
+            reply =
+                "Shridhar is a dedicated Java Developer with 2 years of experience, working at Velox Solutions. He has expertise in Java, Spring MVC, MySQL, and has built SIEM, SOAR, Booth App, and E-Learning systems.";
             return addMessage("bot", reply);
         }
 
         if (includesAny(msg, exp)) {
-            return addMessage("bot", resumeData.experience);
+            return addMessage("bot",
+                "Shridhar has 2 years of professional Java development experience.");
         }
 
-        if (includesAny(msg, edu)) {
-            return addMessage("bot", resumeData.education);
+        if (includesAny(msg, education)) {
+            return addMessage("bot",
+                "He completed his BCA with 8.69 CGPA and is pursuing MCA from Bharati Vidyapeeth.");
         }
 
         if (includesAny(msg, skills)) {
-            return addMessage("bot", "Shridhar's skills:\n• " + resumeData.skills.join("\n• "));
+            return addMessage("bot",
+                "Shridhar's skills include Java, Spring MVC, Hibernate, MySQL, JSP, Servlets, HTML, CSS, JS, Bootstrap, Elasticsearch.");
         }
 
         if (includesAny(msg, projects)) {
-            return addMessage("bot", "He has worked on:\n• " + resumeData.projects.join("\n• "));
+            return addMessage("bot",
+                "His major projects are:\n• SIEM\n• SOAR\n• Booth Management App\n• E-Learning Platform");
         }
 
         if (includesAny(msg, certs)) {
-            return addMessage("bot", "Certifications:\n• " + resumeData.certifications.join("\n• "));
+            return addMessage("bot",
+                "He holds certifications in Java, AWS, MySQL, and Full Stack Development.");
         }
 
         if (includesAny(msg, personality)) {
-            return addMessage("bot", resumeData.personality);
+            return addMessage("bot",
+                "Shridhar is calm, focused, friendly and always eager to learn.");
         }
 
         if (includesAny(msg, strength)) {
-            return addMessage("bot", resumeData.strengths);
+            return addMessage("bot",
+                "His strengths are problem-solving, backend logic, teamwork, and clean code.");
         }
 
         if (includesAny(msg, weakness)) {
-            return addMessage("bot", resumeData.weakness);
+            return addMessage("bot",
+                "He is improving advanced architecture and system design skills.");
         }
 
         if (includesAny(msg, goals)) {
-            return addMessage("bot", resumeData.goals);
-        }
-
-        if (includesAny(msg, jokes)) {
-            return addMessage("bot", "Here’s a quick one 😄:\nWhy do programmers prefer dark mode?\nBecause light attracts bugs!");
-        }
-
-        if (includesAny(msg, motivate)) {
-            return addMessage("bot", "Believe in yourself! Every expert was once a beginner 💪🔥");
+            return addMessage("bot",
+                "His goal is to become a strong backend engineer and later a full-stack architect.");
         }
 
         if (includesAny(msg, contact)) {
-            return addMessage("bot", "You can reach Shridhar at: " + resumeData.contact.email);
+            return addMessage("bot",
+                "You can contact Shridhar at: " + resumeData.contact.email);
         }
 
-        if (msg.includes("interview") || msg.includes("schedule")) {
+        if (includesAny(msg, greet)) {
+            return addMessage("bot",
+                "Hello! I'm Jinn 😊 How can I help you?");
+        }
+
+        if (msg.includes("schedule") || msg.includes("interview")) {
             startSchedulingFlow();
             return;
         }
 
-        if (includesAny(msg, greet)) {
-            return addMessage("bot", "Hello! I’m Jinn 😊 How can I assist you today?");
+        if (msg.includes("thank")) {
+            return addMessage("bot",
+                "You're welcome! Happy to help anytime 😊");
         }
 
-        // SMART SUGGESTIONS
+        /********** SMART SUGGESTION WHEN UNKNOWN **********/
+        const suggestion = guessIntent(msg);
+
         reply =
-            "I didn't fully get that 😅 but I can help with:\n" +
-            "• Shridhar's skills\n" +
-            "• Education\n" +
-            "• Experience\n" +
-            "• Projects\n" +
-            "• Certifications\n" +
-            "• Interview scheduling\n" +
-            "Try asking again in another way!";
+            `I’m not fully sure what you meant, but here’s something related:\n\n👉 ${suggestion}\n\nYou can also ask: “skills”, “projects”, “experience”, “education”, “contact” or “schedule interview”.`;
+
         addMessage("bot", reply);
     }
 
-    /***************************************
+    /*******************************************
+       INTENT GUESSER — Smart fallback
+    *******************************************/
+    function guessIntent(msg) {
+        if (msg.includes("skill") || msg.includes("technology"))
+            return "Do you want to know Shridhar’s skills?";
+        if (msg.includes("year") || msg.includes("experience"))
+            return "Are you asking about work experience?";
+        if (msg.includes("study") || msg.includes("college"))
+            return "Are you asking about education?";
+        if (msg.includes("project"))
+            return "Want to know about his project list?";
+        if (msg.includes("job") || msg.includes("hire"))
+            return "Are you asking why you should hire him?";
+        return "Maybe you want info about skills, projects, education or interview scheduling?";
+    }
+
+
+    /*******************************************
        INTERVIEW SCHEDULING FLOW
-    ****************************************/
+    *******************************************/
     function startSchedulingFlow() {
         schedulingStep = 1;
         schedulingData = {};
-        addMessage("bot", "Sure! What is your full name?");
+        addMessage("bot", "Sure! What's your full name?");
     }
 
     function handleSchedulingResponse(message) {
@@ -386,26 +429,26 @@ document.addEventListener("DOMContentLoaded", function () {
             case 1:
                 schedulingData.name = message;
                 schedulingStep++;
-                addMessage("bot", "Great! Please share your email.");
+                addMessage("bot", "Great! What is your email?");
                 break;
 
             case 2:
                 schedulingData.email = message;
                 schedulingStep++;
-                addMessage("bot", "What date suits you for interview? (DD/MM/YYYY)");
+                addMessage("bot", "Which date suits you? (DD/MM/YYYY)");
                 break;
 
             case 3:
                 schedulingData.date = message;
                 schedulingStep++;
-                addMessage("bot", "What time should we schedule it?");
+                addMessage("bot", "What time do you prefer?");
                 break;
 
             case 4:
                 schedulingData.time = message;
                 schedulingStep = 0;
                 sendScheduleMail();
-                addMessage("bot", "Perfect! Interview request has been sent. Shridhar will contact you soon 👍");
+                addMessage("bot", "Done! Shridhar will confirm your interview soon.");
                 break;
         }
     }
@@ -418,15 +461,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /***************************************
+    /*******************************************
        VOICE INPUT
-    ****************************************/
+    *******************************************/
     const speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
 
     if (speechRecognition) {
         recognition = new speechRecognition();
         recognition.lang = "en-US";
+        recognition.continuous = false;
 
         recognition.onresult = (e) => {
             userMessage.value = e.results[0][0].transcript;
@@ -436,9 +480,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     voiceButton?.addEventListener("click", () => recognition?.start());
 
-    /***************************************
-       FEMALE VOICE OUTPUT
-    ****************************************/
+    /*******************************************
+       FEMALE VOICE OUTPUT (UNCHANGED)
+    *******************************************/
+    window.speechSynthesis.onvoiceschanged = () => {};
+
     function speakBotMessage(text) {
         if (!("speechSynthesis" in window)) return;
 
@@ -456,4 +502,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
         window.speechSynthesis.speak(speech);
     }
+
 });
