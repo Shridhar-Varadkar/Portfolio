@@ -109,7 +109,7 @@ scrollTop.forEach((el) => observer.observe(el));
 document.addEventListener("DOMContentLoaded", function () {
   const chatToggle = document.getElementById("chatToggle");
   const closeChat = document.getElementById("closeChat");
-  const chatbot = document.getElementById("chatbotBox");
+  const chatbot = document.getElementById("chatbot");
   const sendMessage = document.getElementById("sendMessage");
   const userMessage = document.getElementById("userMessage");
   const chatMessages = document.getElementById("chatMessages");
