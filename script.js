@@ -236,183 +236,157 @@ document.addEventListener("DOMContentLoaded", function () {
     const msg = rawMsg.toLowerCase().trim();
     let reply = "";
 
-    // === AI Understanding Keywords === //
-    const askAbout = ["tell me about", "who is", "about shridhar", "about him", "explain about", "who are you talking about"];
-    const askExperience = ["experience", "work experience", "years", "how many years", "working since", "career", "professional background"];
-    const askEducation = ["education", "study", "qualification", "degree", "what did he study", "college"];
-    const askSkills = ["skills", "tech stack", "what he knows", "technical", "programming", "languages"];
-    const askProjects = ["project", "projects he did", "work done", "portfolio projects", "explain project"];
-    const askCertifications = ["certification", "courses", "completed course", "extra qualification"];
-    const askContact = ["contact", "email", "call", "phone"];
-    const askStrengths = ["strength", "strong point", "why hire", "best thing"];
-    const askWeakness = ["weakness", "improve", "weak point"];
-    const askPersonality = ["personality", "behavior", "how is he", "how is shridhar"];
-    const askFuture = ["future", "goal", "aim", "dream", "career goal"];
-    const askWorkStyle = ["work style", "work approach", "working style", "team", "communication"];
-    const askSummary = ["summary", "overall", "brief", "full details", "full info"];
-    const askTechExplain = ["explain spring", "explain java", "what is spring", "spring mvc explain", "backend explain"];
-
-    // Helper
     function includesAny(list) {
         return list.some(q => msg.includes(q));
     }
 
-    // === 1. Full Profile Summary ===
+    const askAbout = ["tell me about", "who is shridhar", "about shridhar", "about him", "explain about", "who is he"];
+    const askSummary = ["summary", "overall", "brief", "full details", "full info", "full profile"];
+    const askExperience = ["experience", "work experience", "years", "how many years", "working since", "career"];
+    const askEducation = ["education", "study", "qualification", "degree", "college"];
+    const askSkills = ["skills", "tech stack", "what he knows", "technical", "programming"];
+    const askProjects = ["project", "projects he did", "work done", "portfolio projects"];
+    const askCertifications = ["certification", "courses", "completed course", "extra qualification"];
+    const askContact = ["contact", "email", "call", "phone"];
+    const askStrengths = ["strength", "strong point", "why hire", "best thing"];
+    const askWeakness = ["weakness", "weak point", "improve"];
+    const askPersonality = ["personality", "behavior", "how is he", "how is shridhar"];
+    const askFuture = ["future", "goal", "aim", "dream", "career goal"];
+    const askWorkStyle = ["work style", "work approach", "team", "communication"];
+    const askTechExplain = ["explain spring", "explain java", "spring mvc explain", "backend explain"];
+
+    // 1. Full profile summary
     if (includesAny(askAbout) || includesAny(askSummary)) {
         reply =
-        `Sure! Here's a complete summary of **Shridhar Varadkar**:\n\n` +
-        `✨ A passionate **Java Developer** with **2 years of hands-on professional experience**.\n` +
-        `✨ Currently working at **Velox Solutions**, delivering backend logic and secure APIs.\n` +
-        `✨ Strong in **Java, Spring MVC, MySQL, JSP, Servlets, HTML, CSS, JavaScript, Elasticsearch**.\n` +
-        `✨ Built major projects: **SIEM**, **SOAR**, **Booth Management App**, **E-Learning System**.\n` +
-        `✨ Completed **BCA (CGPA 8.69)** and pursuing **MCA**.\n` +
-        `✨ Certified in Java, MySQL, AWS, and Full Stack Development.\n\n` +
-        `Let me know if you'd like experience, skills, education, or a specific project. 😊`;
+        "Here is a complete summary about Shridhar Varadkar:\n\n" +
+        "• A passionate Java Developer with 2 years of professional experience.\n" +
+        "• Currently working at Velox Solutions.\n" +
+        "• Skilled in Java, Spring MVC, MySQL, JSP, Servlets, HTML, CSS, JavaScript and Elasticsearch.\n" +
+        "• Worked on SIEM, SOAR, Booth Management App and E-Learning System.\n" +
+        "• Completed BCA with 8.69 CGPA and pursuing MCA.\n" +
+        "• Certified in Java, MySQL, AWS and Full Stack Development.\n\n" +
+        "Ask me if you want more information on skills, projects, or experience.";
         return addMessage("bot", reply);
     }
 
-    // === 2. Experience ===
+    // 2. Experience
     if (includesAny(askExperience)) {
         reply =
-        `Shridhar has **2 years of strong professional experience** as a Java Developer.\n` +
-        `At **Velox Solutions**, he works on backend development, SIEM systems, automation flows, and secure API design.\n` +
-        `He also collaborates with teams, handles debugging, performance tuning, and writes clean backend logic.`;
+        "Shridhar has 2 years of solid professional experience as a Java Developer.\n" +
+        "He works at Velox Solutions focusing on backend development, API building, and security systems.";
         return addMessage("bot", reply);
     }
 
-    // === 3. Education ===
+    // 3. Education
     if (includesAny(askEducation)) {
         reply =
-        `Shridhar completed his **Bachelor of Computer Applications (BCA)** with **8.69 CGPA**.\n` +
-        `He is currently pursuing **MCA from Bharati Vidyapeeth**, focusing on backend engineering and full-stack development.`;
+        "Shridhar completed BCA with 8.69 CGPA and he is currently pursuing MCA from Bharati Vidyapeeth.";
         return addMessage("bot", reply);
     }
 
-    // === 4. Skills ===
-    if (includesAny(askSkills)) {
+    // 4. Skills
+    if (includesAny(askSkills))) {
         reply =
-        `Shridhar’s main skillset:\n\n` +
-        `💻 **Backend:** Java, Spring MVC, Hibernate, Servlets, JSP\n` +
-        `🗄️ **Database:** MySQL, SQL, Elasticsearch\n` +
-        `🌐 **Frontend:** HTML5, CSS3, JS, Bootstrap, jQuery\n` +
-        `🛠️ **Tools:** Git, Postman, STS, Eclipse, Kibana\n\n` +
-        `He is strong in both backend logic and full-stack development.`;
+        "Shridhar's main skills are:\n" +
+        "Java, Spring MVC, Hibernate, MySQL, JSP, Servlets, HTML, CSS, JavaScript, Bootstrap and Elasticsearch.\n" +
+        "He is strong in backend and full-stack development.";
         return addMessage("bot", reply);
     }
 
-    // === 5. Projects ===
+    // 5. Projects
     if (includesAny(askProjects)) {
         reply =
-        `Shridhar has worked on major projects:\n\n` +
-        `1️⃣ **SIEM (Security Information & Event Management)** – Log analytics, threat detection.\n` +
-        `2️⃣ **SOAR (Security Automation)** – Playbooks, incident automation.\n` +
-        `3️⃣ **Booth Management App** – Backend APIs for election booth monitoring.\n` +
-        `4️⃣ **E-Learning System** – Full-stack academic platform.\n\n` +
-        `Want an explanation of any single project?`;
+        "Shridhar has worked on these major projects:\n" +
+        "1. SIEM - Security Information and Event Management\n" +
+        "2. SOAR - Security Automation Response\n" +
+        "3. Booth Management App\n" +
+        "4. E-Learning Management System\n\n" +
+        "Ask me if you want details about any specific project.";
         return addMessage("bot", reply);
     }
 
-    // === 6. Certifications ===
+    // 6. Certifications
     if (includesAny(askCertifications)) {
         reply =
-        `${resumeData.name} holds:\n` +
-        `✔ IBM Java Certification\n✔ AWS Cloud Certification\n✔ MySQL Certification\n✔ Full Stack Certification (ITVedant)\n\n` +
-        `He keeps upgrading his skills regularly.`;
+        "Shridhar is certified in Java, AWS, MySQL and Full Stack Development.";
         return addMessage("bot", reply);
     }
 
-    // === 7. Strengths ===
+    // 7. Strengths
     if (includesAny(askStrengths)) {
         reply =
-        `Shridhar’s strengths:\n` +
-        `• Strong problem-solving mindset\n` +
-        `• Very good in backend and API development\n` +
-        `• Quick learner & adaptive\n` +
-        `• Writes clean, structured code\n` +
-        `• Good communication & teamwork`;
+        "Shridhar's strengths are problem solving, backend development, quick learning, clean coding and teamwork.";
         return addMessage("bot", reply);
     }
 
-    // === 8. Weakness (polite version) ===
+    // 8. Weakness
     if (includesAny(askWeakness)) {
         reply =
-        `Like every growing developer, Shridhar is still improving in:\n` +
-        `• Advanced system design\n` +
-        `• Handling large-scale distributed systems\n` +
-        `But he is actively learning and progressing fast.`;
+        "Shridhar is improving his knowledge in advanced system design and large-scale architecture.";
         return addMessage("bot", reply);
     }
 
-    // === 9. Personality ===
+    // 9. Personality
     if (includesAny(askPersonality)) {
         reply =
-        `Shridhar is calm, focused, friendly, and hardworking.\n` +
-        `He likes solving problems and enjoys working with teams.\n` +
-        `People appreciate his patience and willingness to help others.`;
+        "Shridhar is friendly, calm, focused and hardworking. He communicates well and enjoys helping others.";
         return addMessage("bot", reply);
     }
 
-    // === 10. Future Goals ===
+    // 10. Future goals
     if (includesAny(askFuture)) {
         reply =
-        `Shridhar's goal is to become a highly skilled Backend Engineer and eventually a Full Stack Architect.\n` +
-        `He aims to master Spring Boot, Microservices, Cloud, and distributed systems.`;
+        "Shridhar aims to become a strong backend engineer and later a full stack architect. He wants to master Spring Boot, Microservices and Cloud.";
         return addMessage("bot", reply);
     }
 
-    // === 11. Work Style ===
+    // 11. Work style
     if (includesAny(askWorkStyle)) {
         reply =
-        `Shridhar works in a structured, logical, and clean-coded manner.\n` +
-        `He prefers planning tasks, breaking them into modules, and delivering with quality.\n` +
-        `He communicates clearly and works well in team environments.`;
+        "Shridhar follows a structured and clean coding approach. He likes planning tasks, working in teams and communicating clearly.";
         return addMessage("bot", reply);
     }
 
-    // === 12. Technical Explanations (Java / Spring) ===
+    // 12. Technical explanations
     if (includesAny(askTechExplain)) {
         reply =
-        `Sure! Shridhar can explain technologies simply:\n\n` +
-        `**Spring MVC** → Framework for building web apps using Model-View-Controller.\n` +
-        `**Java** → Object-oriented programming language used for backend logic.\n\n` +
-        `If you want, I can give full examples, diagrams, or simple explanations.`;
+        "Sure. Here is a simple explanation:\n\n" +
+        "Spring MVC is a framework used to build web applications using the Model View Controller pattern.\n" +
+        "Java is an object-oriented programming language widely used for backend systems.\n\n" +
+        "If you want, I can explain any technology in detail.";
         return addMessage("bot", reply);
     }
 
-    // === 13. Contact ===
+    // 13. Contact
     if (includesAny(askContact)) {
-        reply =
-            `You can reach Shridhar at: **${resumeData.contact.email}**\n` +
-            `He will get back to you soon! 😊`;
+        reply = 
+        "You can contact Shridhar at: " + resumeData.contact.email;
         return addMessage("bot", reply);
     }
 
-    // === 14. Interview Scheduling ===
-    if (msg.includes("interview") || msg.includes("schedule")) {
+    // 14. Scheduling
+    if (msg.includes("schedule") || msg.includes("interview")) {
         startSchedulingFlow();
         return;
     }
 
-    // === 15. Friendly Greeting ===
+    // 15. Greeting
     if (msg.includes("hi") || msg.includes("hello") || msg.includes("hey")) {
-        reply = `Hey! 😊 I'm Shrii Assistant. Ask me anything about Shridhar — skills, projects, experience, anything!`;
+        reply = "Hello! I am Shrii Assistant. How can I help you today?";
         return addMessage("bot", reply);
     }
 
-    // === 16. Thanks ===
+    // 16. Thanks
     if (msg.includes("thank")) {
-        reply = `You're welcome! Happy to help anytime 😊`;
+        reply = "You're welcome! Happy to help.";
         return addMessage("bot", reply);
     }
 
-    // === 17. Smart Fallback ===
+    // 17. Fallback
     reply =
-        `That's interesting! 😊  
-I can tell you about Shridhar's skills, experience, projects, education, personality, or help you schedule an interview.`;
-
+    "I can help you with Shridhar's skills, projects, experience, education or interview scheduling. Ask me anything!";
     addMessage("bot", reply);
 }
-
 
     /***************************************
        SCHEDULING INTERVIEW FLOW
