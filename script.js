@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbot.classList.toggle("active");
 
         if (chatbot.classList.contains("active")) {
-            speakBotMessage("Hi, I'm Shrii Assistant! How can I help you today?");
+            speakBotMessage("Hi, I'm Jinn, Shrii's virtual buddy! How can I help you today?");
         }
     });
 
@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (includesAny(msg, greet)) {
-            reply = "Hello! I'm Jinn, Shrii's Assistant 😊 How can I help you?";
+            reply = "Hello! I'm Jinn, Shrii's virtual buddy 😊 How can I help you?";
             return addMessage("bot", reply);
         }
 
