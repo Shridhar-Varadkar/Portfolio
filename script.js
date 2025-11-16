@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbot.classList.toggle("active");
 
         if (chatbot.classList.contains("active")) {
-            speakBotMessage("Hi! I'm Jinn, Shrii’s friendly assistant. How can I help you today?");
+            speakBotMessage("Hi! I'm Shrii’s virtual assistant. How can I help you today?");
         }
     });
 
