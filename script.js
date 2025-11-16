@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (includesAny(msg, greet)) {
             return addMessage("bot",
-                "Hello! I'm Jinn 😊 How can I help you?");
+                "Hello! I'm Shri's virtual assistant 😊 How can I help you?");
         }
 
         if (msg.includes("schedule") || msg.includes("interview")) {
