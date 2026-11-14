@@ -1566,3 +1566,51 @@ footer a{
 
 
 
+
+/* Premium refinement layer: keeps the existing HTML class/id structure */
+:root{--bg--color:#101522;--secon-bg-color:#171f30;--text-color:#edf3ff;--hover-color:#55e6d0;--neon-box-shadow:0 8px 28px rgba(85,230,208,.14)}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:radial-gradient(circle at 12% 8%,rgba(85,230,208,.08),transparent 28rem),radial-gradient(circle at 90% 35%,rgba(84,120,255,.08),transparent 30rem),var(--bg--color);color:var(--text-color);line-height:1.65}
+header,header.sticky{background:rgba(16,21,34,.9);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:padding .25s ease,background .25s ease}
+.logo{letter-spacing:.4px}
+.navlist a{font-size:.92rem;animation-fill-mode:both;transition:color .2s ease}
+.navlist a.active,.navlist a:hover{color:var(--hover-color)}
+section{padding-top:112px;padding-bottom:112px}
+.home{min-height:92vh}
+.home-content h1{line-height:1.2;letter-spacing:-.8px}
+.home-content p,.about-content p,.service-box p{color:#b9c5d8;line-height:1.8}
+.change-text{color:var(--hover-color)}
+.info-box{width:auto;max-width:100%;justify-content:flex-start}
+.btn-box{gap:14px;justify-content:flex-start}
+.btn-box .btn{border-radius:9px;box-shadow:none;transition:transform .2s ease,background .2s ease,color .2s ease}
+.btn-box .btn:hover{transform:translateY(-2px)}
+.social-icons{justify-content:flex-start;gap:12px}
+.social-icons a{border-radius:10px;box-shadow:none;background:rgba(255,255,255,.035)}
+.about,.skills,.contact{background:rgba(255,255,255,.035)}
+.about-content h2,.main-text h2{color:var(--hover-color)}
+.section-services{align-items:stretch}
+.section-services .service-box{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.09);border-radius:16px;box-shadow:0 14px 35px rgba(0,0,0,.14);padding:2rem 1.5rem}
+.service-box:hover{transform:translateY(-6px);border-color:rgba(85,230,208,.4)}
+.service-box h3,.skill-main h3{color:#f3f7ff}
+.skill-left .skill-bar .bar{background:rgba(255,255,255,.09)}
+.skill-bar .bar span{background:linear-gradient(90deg,#55e6d0,#6f9cff);box-shadow:none}
+.portfolio-gallery{gap:1.4rem}
+.port-box{border:1px solid rgba(255,255,255,.1);border-radius:16px;box-shadow:0 14px 35px rgba(0,0,0,.2);background:#171f30}
+.port-image img{opacity:.72;object-fit:cover;transition:transform .45s ease,opacity .45s ease}
+.port-box:hover .port-image img{opacity:.95;transform:scale(1.06)}
+.port-content{background:linear-gradient(180deg,rgba(9,14,24,.15),rgba(9,14,24,.96))}
+.port-content a{background:var(--hover-color);outline:none}
+.contact form input,.contact form textarea,.contant form textarea{width:100%;color:var(--text-color);background:rgba(8,13,23,.65);border:1px solid rgba(255,255,255,.12);border-radius:9px;margin-bottom:.9rem;padding:.9rem 1rem;font:inherit}
+.contact form input:focus,.contact form textarea:focus{outline:1px solid var(--hover-color);border-color:var(--hover-color)}
+footer{border-top:1px solid rgba(255,255,255,.08)}
+footer a{background:var(--hover-color);color:#101522}
+#chatbotBox{background:rgba(23,31,48,.97);border:1px solid rgba(85,230,208,.35);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+#chatbotBox .chat-header{background:linear-gradient(120deg,#1c3c4b,#1d3152);color:#f4fbff}
+#chatbotBox .chat-messages{background:#111827}
+#chatbotBox .message.bot .message-content{background:#263449;color:#edf3ff}
+#chatbotBox .message.user .message-content{background:var(--hover-color);color:#10202a}
+#chatbotBox .chat-input-area{background:#101522}
+#chatbotBox .chat-input-area input{background:#1c2738;border-radius:8px}
+.chat-toggle{background:linear-gradient(135deg,#55e6d0,#6f9cff);color:#101522;box-shadow:0 10px 28px rgba(85,230,208,.25)}
+@media(max-width:768px){section{padding:88px 6%}.home{min-height:auto;padding-top:130px}.home-content{margin-top:0}.navlist{background:rgba(16,21,34,.98);border-bottom:1px solid rgba(255,255,255,.08)}.btn-box{width:100%;max-width:340px}#chatbotBox{width:min(340px,calc(100vw - 32px));right:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
