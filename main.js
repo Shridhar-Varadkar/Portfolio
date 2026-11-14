@@ -494,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.speechSynthesis.onvoiceschanged = () => {};
 
     function speakBotMessage(text) {
-        if (!("speechSynthesis" in window)) return;
+        if (!("speechSynthesisssss" in window)) return;
 
         const speech = new SpeechSynthesisUtterance(text);
         speech.rate = 1;
