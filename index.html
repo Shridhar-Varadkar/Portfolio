@@ -1,112 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+from pathlib import Path
+import re
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shridhar Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+src = Path("/mnt/data/Pasted text(4).txt")
+html = src.read_text(encoding="utf-8")
 
-<body>
-    
-<!-- 🌐 Shrii Assistant Chatbot -->
-<div id="chatbot-container">
+# Update the homepage introduction while preserving the existing layout and class names.
+html = html.replace(
+    "A passionate and dedicated individual with a strong background in software development. Skilled in\n"
+    "                programming languages and technologies such as Java, HTML5, CSS3, and JavaScript.",
+    "Software Engineer with 3+ years of professional experience across Java development and enterprise "
+    "application management. Experienced in Java-based web applications, backend technologies, and "
+    "supporting critical banking applications."
+)
 
-  <!-- Floating toggle button -->
-  <button id="chatToggle" class="chat-toggle">
-    <i class='bx bx-message-dots'></i>
-  </button>
-
-  <!-- Chatbot box -->
-  <div id="chatbotBox" class="chatbot">
-    <div class="chat-header">
-      <i class='bx bx-bot'></i>
-      <span>virtual assistant </span>
-      <button id="closeChat" class="close-chat"><i class='bx bx-x'></i></button>
-    </div>
-
-    <div id="chatMessages" class="chat-messages">
-      <div class="message bot">
-        <div class="message-content">
-          <p>Hi there! 👋 I’m Shrii’s virtual assistant <br>How can I help you today?</p>
-          <span class="timestamp">Just now</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="chat-input-area">
-      <input id="userMessage" type="text" placeholder="Type your message here..." />
-      <button id="voiceInput" class="chat-btn"><i class='bx bx-microphone'></i></button>
-      <button id="sendMessage" class="chat-btn"><i class='bx bx-send'></i></button>
-    </div>
-  </div>
-</div>
-<!-- === END CHATBOT === -->
-
-    <!--Header site-->
-    <header>
-        <div class="logo"><span>Shree</span></div>
-        <ul class="navlist">
-            <li><a href="#home" style="--i:1;">Home</a></li>
-            <li><a href="#about" style="--i:2;">About</a></li>
-            <li><a href="#services" style="--i:3;">Experience</a></li>
-            <li><a href="#skills" style="--i:4;">Skills</a></li>
-            <li><a href="#Portfolio" style="--i:5;">Projects</a></li>
-            <li><a href="#contact" style="--i:6;">Contact</a></li>
-        </ul>
-        <div id="menu-icon" class="bx bx-menu"></div>
-    </header>
-
-    <!-- HOME SECTION -->
-    <section id="home" class="home">
-        <div class="home-content scroll-scale">
-            <h1>Hi there...! <br> I am Shridhar Varadkar.</h1>
-            <div class="change-text">
-                <h3>And I'm</h3>
-                <h3>
-                    <span class="word"> Full-Stack&nbsp; Developer.</span>
-                    <span class="word"> Java&nbsp; Developer.</span>
-                    <span class="word"> Web&nbsp; Developer.</span>
-                </h3>
-            </div>
-            <p>
-                A passionate and dedicated individual with a strong background in software development. Skilled in
-                programming languages and technologies such as Java, HTML5, CSS3, and JavaScript.
-            </p>
-            <div class="info-box">
-                <div class="email-info">
-                    <h5>Email:</h5>
-                    <span>hemantvaradkar2000@gmail.com</span>
-                </div>
-            </div>
-            <div class="btn-box">
-                <a href="https://drive.google.com/file/d/1BB-JuIFzFfuYGCMWbIsf6Fv6pHpUG1xp/view?usp=drive_link" target="_blank"
-                    class="btn">Download CV</a>
-                <a href="mailto: hemantvaradkar2000@gmail.com" class="btn">Hire Me Now!</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://github.com/Shridhar-Varadkar" target="_blank"><i class="bx bxl-github"></i></a>
-                <a href="https://www.linkedin.com/in/shridhar-varadkar-175832244/" target="_blank">
-                    <i class="bx bxl-linkedin"></i></a>
-                <a href="mailto: hemantvaradkar2000@gmail.com" target="_blank">
-                    <i class='bx bxl-gmail'></i></a>
-            </div>
-        </div>
-        <div class="home-image scroll-scale">
-            <!-- Image placeholder -->
-        </div>
-    </section>
-
-    <!--------- ABOUT SECTION --------->
-    <section id="about" class="about">
-        <div class="img-about scroll-scale"></div>
-        <div class="about-content scroll-scale">
-            <span> LET ME INTRODUCE MYSELF</span>
-            <h2>ABOUT ME</h2>
-            <p>
-                🧑‍💻  
+# Replace the outdated About section copy.
+old_about = """                🧑‍💻  
                 I am a passionate and results-driven Java Developer with hands-on experience in building scalable, secure backend systems and responsive web interfaces. Currently working at Velox Solutions, I have contributed to real-time security analytics through SIEM solutions and backend API development for mobile applications.
                 <br><br>
                 My technical expertise includes Java, Spring MVC, Hibernate, JSP, MySQL, Elasticsearch, and frontend tools like HTML, CSS, Bootstrap, and jQuery. I have a strong foundation in full-stack development and strive to deliver efficient, secure, and high-performing applications.
@@ -120,173 +28,106 @@
                 Java | Spring MVC | Hibernate | MySQL | Elasticsearch | JSP | JavaScript | Git | Postman | Bootstrap
                 <br><br>
                 📚 I am currently pursuing MCA and always eager to collaborate on meaningful projects that challenge me and create impact.  
-                Let’s connect and create something amazing!
-            </p>
-        </div>
-    </section>
+                Let’s connect and create something amazing!"""
+new_about = """                🧑‍💻
+                I am a Software Engineer with 3+ years of professional experience in Java development and enterprise application management. I have a strong foundation in backend development and Java-based web applications, with hands-on experience in Java, Spring MVC, Spring Boot, Hibernate, JDBC, JSP, Servlets, REST APIs, and MySQL.
+                <br><br>
+                Currently, I work as a System Engineer at Wipro, supporting enterprise banking technology for ICICI Bank. My work includes application ownership and production support for RBI SFMS applications (NEFT and RTGS), application monitoring, troubleshooting, release activities, and coordination with infrastructure, database, security, and application teams.
+                <br><br>
+                🚀 <b>Areas of Experience</b><br>
+                • Java application development and backend technologies<br>
+                • Enterprise application support and troubleshooting<br>
+                • Production monitoring, incident and change management<br>
+                • Application releases, patching, and deployment coordination<br>
+                • Banking technology and financial messaging systems
+                <br><br>
+                🧩 <b>Technology Stack</b><br>
+                Java | Spring Boot | Spring MVC | Hibernate | JDBC | REST APIs | JSP | Servlets | MySQL | JavaScript | Angular | IBM MQ | Apache Tomcat | AWS
+                <br><br>
+                I am passionate about solving technical problems, building reliable software, and continuously strengthening my backend development skills. I am pursuing my MCA and value opportunities to learn, collaborate, and contribute to meaningful technology projects."""
+html = html.replace(old_about, new_about)
 
-    <!---------- EXPERIENCE SECTION ---------->
-    <section id="services" class="services">
-        <div class="main-text">
-            <h2>MY EXPERIENCE </h2>
-        </div>
-        <div class="section-services scroll-scale">
+# Replace the outdated single-employer experience card with Wipro and Velox experience.
+start = html.index('        <div class="section-services scroll-scale">')
+end = html.index('        </div>\n    </section>', start) + len('        </div>')
+new_experience = """        <div class="section-services scroll-scale">
+            <div class="service-box">
+                <i class='bx bx-server service-icon'></i>
+                <h3>System Engineer | Wipro</h3>
+                <p><i><b>January 2026 – Present | Enterprise Banking Technology</b></i></p>
+                <p>
+                    Supporting enterprise banking applications for ICICI Bank, including RBI SFMS (NEFT and RTGS).
+                    Responsibilities include application ownership, production monitoring, troubleshooting,
+                    coordination of application releases and patches, SSL/TLS certificate activities, and
+                    collaboration with infrastructure, database, security, and application teams.
+                </p>
+            </div>
             <div class="service-box">
                 <i class='bx bx-code-alt service-icon'></i>
-                <h3> Software Developer</h3>
+                <h3>Java Software Developer | Velox Solutions</h3>
+                <p><i><b>October 2023 – November 2025 | Software Development</b></i></p>
                 <p>
-                    <i><b>I am currently working at Velox Solutions as a Software Developer, primarily focusing on Java.</b></i>
-                </p>
-                <p>
-                    I am honing my technical skills and gaining hands-on experience as a Java Developer. Actively contributing to dynamic projects using Java, Spring, and related frameworks while deepening my understanding of modern software development practices. Passionate about building scalable, user-friendly applications and continuously learning to stay ahead in the tech industry.
+                    Worked on Java-based application development and maintenance. Gained hands-on experience
+                    with Java, Spring MVC, Hibernate, JDBC, JSP, Servlets, MySQL, and web technologies.
+                    Contributed to backend functionality, API development, troubleshooting, and software
+                    development activities, including work related to SIEM and security analytics.
                 </p>
                 <div class="btn-box service-btn">
-                    <a href="https://velox.co.in/" target="_blank" class="btn">Read More</a>
+                    <a href="https://velox.co.in/" target="_blank" rel="noopener noreferrer" class="btn">Company Website</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </div>"""
+html = html[:start] + new_experience + html[end:]
 
-    <!--------- SKILL SECTION --------->
-    <section id="skills" class="skills">
-        <div class="main-text scroll-scale">
-            <span> Technical Skills And Tools</span>
-            <h2>My Skills</h2>
-        </div>
-        <div class="skill-main">
-            <div class="skill-left scroll-scale">
-                <h3>Technical Skills</h3>
+# Update skills to reflect a practical technology list without unsupported self-rated percentages.
+skills_start = html.index('                <div class="skill-bar">')
+skills_end = html.index('\n\n            </div>', skills_start)
+new_skills = """                <div class="skill-bar"><div class="info"><p>Java</p></div><div class="bar"><span class="JAVA"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>Spring Boot & Spring MVC</p></div><div class="bar"><span class="SpringBoot"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>Hibernate & JDBC</p></div><div class="bar"><span class="Hibernate"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>REST APIs</p></div><div class="bar"><span class="JDBC"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>MySQL / SQL</p></div><div class="bar"><span class="MYSQL"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>JavaScript</p></div><div class="bar"><span class="JavaScript"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>HTML5 & CSS3</p></div><div class="bar"><span class="HTML"></span></div></div>
+                <div class="skill-bar"><div class="info"><p>Angular</p></div><div class="bar"><span class="CSS"></span></div></div>"""
+html = html[:skills_start] + new_skills + html[skills_end:]
 
-                <div class="skill-bar"><div class="info"><p>Java</p><p>95%</p></div><div class="bar"><span class="JAVA"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>HTML5</p><p>90%</p></div><div class="bar"><span class="HTML"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>CSS3</p><p>90%</p></div><div class="bar"><span class="CSS"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>JavaScript</p><p>90%</p></div><div class="bar"><span class="JavaScript"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>JDBC / JSP-Servlet</p><p>98%</p></div><div class="bar"><span class="JDBC"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>Hibernate</p><p>90%</p></div><div class="bar"><span class="Hibernate"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>MySQL (SQL)</p><p>95%</p></div><div class="bar"><span class="MYSQL"></span></div></div>
-                <div class="skill-bar"><div class="info"><p>Spring Boot</p><p>90%</p></div><div class="bar"><span class="SpringBoot"></span></div></div>
+# Refresh tools list to include technologies reflected in the user's current role.
+html = html.replace(
+    '<h3>TOOLS</h3>',
+    '<h3>TOOLS & ENTERPRISE TECHNOLOGIES</h3>'
+)
+html = html.replace(
+    '<small>HeidiSQL</small>',
+    '<small>HeidiSQL / MySQL</small>'
+)
+html = html.replace(
+    '<small>Kibana</small>',
+    '<small>Kibana / Elasticsearch</small>'
+)
 
-            </div>
-            <div class="skill-right scroll-scale">
-                <h3>TOOLS</h3>
-                <div class="porfessional">
-                    <div class="box"><div class="circle" data-dots="90" data-percent="90"></div><div class="text"><big>95%</big><small>Visual Studio Code</small></div></div>
-                    <div class="box"><div class="circle" data-dots="90" data-percent="90"></div><div class="text"><big>95%</big><small>Eclipse</small></div></div>
-                    <div class="box"><div class="circle" data-dots="90" data-percent="90"></div><div class="text"><big>95%</big><small>Spring Tool Suite (STS)</small></div></div>
-                    <div class="box"><div class="circle" data-dots="80" data-percent="80"></div><div class="text"><big>95%</big><small>Postman</small></div></div>
-                    <div class="box"><div class="circle" data-dots="80" data-percent="80"></div><div class="text"><big>90%</big><small>GitHub</small></div></div>
-                    <div class="box"><div class="circle" data-dots="80" data-percent="80"></div><div class="text"><big>90%</big><small>HeidiSQL</small></div></div>
-                    <div class="box"><div class="circle" data-dots="80" data-percent="80"></div><div class="text"><big>90%</big><small>Kibana</small></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
+# Update projects wording to avoid implying current Wipro work is a public portfolio project.
+html = html.replace(
+    'Developed a real-time security monitoring solution integrating Elasticsearch and Kibana to analyze logs and detect threats.',
+    'Worked on a SIEM-focused project involving Elasticsearch and Kibana for log analysis and security monitoring.'
+)
+html = html.replace(
+    'Built automation playbooks for incident response, integrating with SIEM for faster resolution.',
+    'Explored SOAR concepts and incident-response automation through playbooks integrated with SIEM workflows.'
+)
+html = html.replace(
+    'Developed a mobile application to manage election booth operations, including voter data\n'
+    '                                management, reporting modules, and secure backend integration using Java & Spring.',
+    'Contributed to a mobile application for election booth operations, including voter data management,\n'
+    '                                reporting modules, and backend integration using Java and Spring.'
+)
 
-    <!-- PROJECTS SECTION -->
-    <section id="Portfolio" class="Portfolio">
-        <div class="main-text scroll-scale">
-            <h2>Latest Projects</h2>
-        </div>
-        <div class="container">
-            <div class="filter-buttons scroll-scale">
-                <button class="button" data-filter="all">All</button>
-                <button class="button" data-filter=".product">Product</button>
-                <button class="button" data-filter=".interacting">Interacting</button>
-                <button class="button" data-filter=".webapp">Web App</button>
-            </div>
-            <div class="portfolio-gallery scroll-bottom">
+# Improve metadata and footer year without altering linked CSS/JS assets.
+html = html.replace('<title>Shridhar Portfolio</title>',
+                    '<title>Shridhar Varadkar | Java Developer & Software Engineer</title>')
+html = html.replace('© 2025 - Developed by', '© 2026 - Developed by')
 
-                <div class="port-box mix interacting">
-                    <div class="port-image"><img src="back.jpg" alt="" /></div>
-                    <div>
-                        <div class="port-content">
-                            <h3>Security Information and Event Management (SIEM)</h3>
-                            <p>Developed a real-time security monitoring solution integrating Elasticsearch and Kibana to analyze logs and detect threats.</p>
-                            <a href="https://github.com/Shridhar-Varadkar" target="_blank"><i class='bx bx-link-external'></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="port-box mix product">
-                    <div class="port-image"><img src="parking.jpeg" alt="" /></div>
-                    <div>
-                        <div class="port-content">
-                            <h3>Security Orchestration, Automation, and Response (SOAR)</h3>
-                            <p>Built automation playbooks for incident response, integrating with SIEM for faster resolution.</p>
-                            <a href="https://github.com/Shridhar-Varadkar" target="_blank"><i class='bx bx-link-external'></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="port-box mix interacting">
-                    <div class="port-image"><img src="project3.jpeg" alt="" /></div>
-                    <div>
-                        <div class="port-content">
-                           <h3>Booth Management System (Mobile App)</h3>
-                           <p>Developed a mobile application to manage election booth operations, including voter data
-                               management, reporting modules, and secure backend integration using Java & Spring.</p>
-                           <a href="https://github.com/Shridhar-Varadkar" target="_blank"><i class='bx bx-link-external'></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
-        <div class="main-text scroll-scale">
-            <span>Ask me a question</span>
-            <h2>Contact Me</h2>
-        </div>
-       <form action="https://api.web3forms.com/submit" class="scroll-scale" method="post">
-    <input type="hidden" name="access_key" value="3d7532f4-3d76-42cd-8cf6-d7d118c6c829">
-    <input type="text" placeholder="Your Name" name="name" required>
-    <input type="email" placeholder="Email" name="email" required>
-    <input type="text" placeholder="Your Address" name="address" required>
-    <input type="number" placeholder="Phone Number" name="phone" required>
-    <textarea name="message" cols="30" rows="5" placeholder="Your Message" required
-        style="width:100%; background-color:#250821; color:white; border:1px solid #ccc; border-radius:6px; padding:12px; margin:8px 0; box-sizing:border-box; resize:none;"></textarea>
-    <div class="btn-box formBtn">
-        <button type="submit" class="btn">Send Message</button>
-    </div>
-</form>
-
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p class="scroll-scale">
-            © 2025 - Developed by <strong>Shridhar Varadkar</strong>
-        </p>
-        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-    </footer>
-
-    <script src="mixitup.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+out = Path("/mnt/data/Shridhar_Professional_Portfolio.html")
+out.write_text(html, encoding="utf-8")
+print(f"Created: {out}")
+print(f"Size: {out.stat().st_size} bytes")
