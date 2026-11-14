@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (includesAny(msg, education)) {
             return addMessage("bot",
-                "He completed a BBA from SPPU with 8.69 CGPA and is pursuing an MCA through Bharati Vidyapeeth Online.");
+                "He completed a MCA from Bharati Vidyapeeth with 9.69 CGPA MCA.");
         }
 
         if (includesAny(msg, skills)) {
